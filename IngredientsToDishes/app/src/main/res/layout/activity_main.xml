@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="chho.ingredientstodishes.MainActivity">
+
+
+    <TextView
+        android:id="@+id/FavTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:text="FAVORITE RECIPES"/>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/FavBox"
+        android:layout_below="@+id/FavTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/FavItem1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Tuna Melt"/>
+
+        <Button
+            android:id="@+id/DeleteFav1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x"
+            android:layout_alignParentRight="true"
+            android:background="@null"/>
+
+        <TextView
+            android:id="@+id/FavItem2"
+            android:layout_below="@+id/FavItem1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:text="Spaghetti And Meatballs"/>
+
+        <Button
+            android:id="@+id/DeleteFav2"
+            android:layout_below="@+id/DeleteFav1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x"
+            android:layout_alignParentRight="true"
+            android:background="@null"/>
+
+        <TextView
+            android:id="@+id/FavItem3"
+            android:layout_below="@+id/FavItem2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:text="Potato Salad"/>
+
+        <Button
+            android:id="@+id/DeleteFav3"
+            android:layout_below="@+id/DeleteFav2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x"
+            android:layout_alignParentRight="true"
+            android:background="@null"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/FavoriteIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:textSize="15sp"
+            android:text="Img"/>
+
+        <Button
+            android:id="@+id/IngredientsIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:layout_toLeftOf="@id/FavoriteIcon"
+            android:textSize="15sp"
+            android:text="Img"/>
+
+        <Button
+            android:id="@+id/RecipeIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:layout_toRightOf="@id/IngredientsIcon"
+            android:textSize="15sp"
+            android:text="Img"/>
+
+        <Button
+            android:id="@+id/TimerIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:layout_toRightOf="@id/RecipeIcon"
+            android:textSize="15sp"
+            android:text="Img"/>
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
