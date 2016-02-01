@@ -21,8 +21,52 @@
         android:id="@+id/recipes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_weight="6">
 
     </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom">
+
+        <ImageButton android:id="@+id/FavoriteIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/favorite" />
+
+        <ImageButton
+            android:id="@+id/IngredientsIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ingredientslist"/>
+
+        <ImageButton
+            android:id="@+id/RecipeIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/recipe"/>
+
+        <ImageButton
+            android:id="@+id/TimerIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/timer"/>
+
+    </LinearLayout>
 
 </LinearLayout>

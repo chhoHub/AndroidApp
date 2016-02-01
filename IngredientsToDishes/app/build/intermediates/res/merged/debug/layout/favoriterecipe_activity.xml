@@ -3,7 +3,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp">
@@ -91,6 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:scaleType="fitXY"
             android:src="@drawable/favorite" />
 
         <ImageButton
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:layout_toLeftOf="@id/FavoriteIcon"
+            android:scaleType="fitXY"
             android:src="@drawable/ingredientslist"/>
 
         <ImageButton
@@ -107,18 +107,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_toRightOf="@id/IngredientsIcon"
             android:adjustViewBounds="true"
-            android:src="@drawable/favorite"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/recipe"/>
 
         <ImageButton
             android:id="@+id/TimerIcon"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_toRightOf="@id/RecipeIcon"
             android:adjustViewBounds="true"
-            android:src="@drawable/ingredientslist"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/timer"/>
 
     </LinearLayout>
 

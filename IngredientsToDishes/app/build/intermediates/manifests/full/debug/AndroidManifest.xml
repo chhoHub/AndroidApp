@@ -21,6 +21,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="chho.ingredientstodishes.FavoritesActivity" >
+        </activity>
+        <activity android:name="chho.ingredientstodishes.IngredientsActivity" >
+        </activity>
+        <activity android:name="chho.ingredientstodishes.SelectingRecipeActivity" >
+        </activity>
+        <activity android:name="chho.ingredientstodishes.FoodActivity" >
+        </activity>
+        <activity android:name="chho.ingredientstodishes.TimerActivity" >
+        </activity>
     </application>
 
 </manifest>

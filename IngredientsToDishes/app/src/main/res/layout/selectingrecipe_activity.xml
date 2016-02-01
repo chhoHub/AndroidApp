@@ -56,7 +56,7 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:src="@drawable/Recipe"/>
+            android:src="@drawable/recipe"/>
 
         <ImageButton
             android:id="@+id/TimerIcon"
@@ -65,7 +65,7 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:src="@drawable/Timer"/>
+            android:src="@drawable/timer"/>
 
     </LinearLayout>
 

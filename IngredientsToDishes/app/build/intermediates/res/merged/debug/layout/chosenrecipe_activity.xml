@@ -14,42 +14,43 @@
         <ImageButton
             android:id="@+id/back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@android:drawable/ic_menu_revert"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="2">
 
             <TextView
                 android:id="@+id/recipeTitle"
-                android:gravity="center_horizontal"
+                android:gravity="center_vertical"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
+                android:layout_weight="1"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:text="Food Name"/>
 
             <RatingBar
+
+                android:id="@+id/ratingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/ratingBar"
-                android:layout_gravity="center_horizontal" />
-
+                android:layout_weight="1"
+                android:layout_gravity="center"/>
 
         </LinearLayout>
-
 
         <ImageButton
             android:id="@+id/fav"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:src="@android:drawable/star_big_off"/>
-
 
     </LinearLayout>
 
@@ -57,9 +58,10 @@
     <ImageView
         android:id="@+id/foodpic"
         android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
         android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
         android:src="@drawable/food"/>
 
     <LinearLayout
@@ -92,13 +94,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="8">
+        android:layout_weight="5">
 
         <LinearLayout
             android:id="@+id/requiredingredients"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_weight="2">
 
             <TextView
@@ -121,6 +124,7 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="3">
 
             <TextView
@@ -135,6 +139,51 @@
             </ListView>
 
         </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <ImageButton android:id="@+id/FavoriteIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/favorite" />
+
+        <ImageButton
+            android:id="@+id/IngredientsIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ingredientslist"/>
+
+        <ImageButton
+            android:id="@+id/RecipeIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/recipe"/>
+
+        <ImageButton
+            android:id="@+id/TimerIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/timer"/>
 
     </LinearLayout>
 

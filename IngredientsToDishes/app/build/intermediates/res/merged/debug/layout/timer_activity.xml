@@ -73,10 +73,52 @@
             android:layout_height="wrap_content"
             android:text="Reset"/>
 
-
-
-
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom">
+
+        <ImageButton android:id="@+id/FavoriteIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/favorite" />
+
+        <ImageButton
+            android:id="@+id/IngredientsIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:layout_toLeftOf="@id/FavoriteIcon"
+            android:src="@drawable/ingredientslist"/>
+
+        <ImageButton
+            android:id="@+id/RecipeIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/recipe"/>
+
+        <ImageButton
+            android:id="@+id/TimerIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/timer"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>
