@@ -443,10 +443,11 @@ int drawable abc_textfield_search_default_mtrl_alpha 0x7f020043
 int drawable abc_textfield_search_material 0x7f020044
 int drawable favorite 0x7f020045
 int drawable food 0x7f020046
-int drawable ingredientslist 0x7f020047
-int drawable notification_template_icon_bg 0x7f02004a
-int drawable recipe 0x7f020048
-int drawable timer 0x7f020049
+int drawable ic_launcher 0x7f020047
+int drawable ingredientslist 0x7f020048
+int drawable notification_template_icon_bg 0x7f02004b
+int drawable recipe 0x7f020049
+int drawable timer 0x7f02004a
 int id DeleteFav1 0x7f0c0060
 int id DeleteFav2 0x7f0c0062
 int id DeleteFav3 0x7f0c0064

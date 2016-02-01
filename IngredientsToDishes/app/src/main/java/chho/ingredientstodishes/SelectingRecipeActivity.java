@@ -20,26 +20,34 @@ public class SelectingRecipeActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.selectingrecipe_activity);
 
-//        fav.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(SelectingRecipeActivity.this, FavoritesActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        ingred.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(SelectingRecipeActivity.this, IngredientsActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        timer.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(SelectingRecipeActivity.this, TimerActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        fav = (ImageButton)findViewById(R.id.FavoriteIcon);
+        ingred = (ImageButton)findViewById(R.id.IngredientsIcon);
+        recipe = (ImageButton)findViewById(R.id.RecipeIcon);
+        timer = (ImageButton)findViewById(R.id.TimerIcon);
+
+        fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SelectingRecipeActivity.this, FavoritesActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        ingred.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SelectingRecipeActivity.this, IngredientsActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        timer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SelectingRecipeActivity.this, TimerActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }
