@@ -220,6 +220,10 @@
         "source": "E:\\Users\\Gary\\AndroidStudioProjects\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_screen_content_include.xml"
     },
     {
+        "merged": "C:\\Users\\Gary\\Desktop\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\res\\merged\\debug\\layout\\yourlistdisplay_activity.xml",
+        "source": "C:\\Users\\Gary\\Desktop\\AndroidApp\\IngredientsToDishes\\app\\src\\main\\res\\layout\\yourlistdisplay_activity.xml"
+    },
+    {
         "merged": "C:\\Users\\Gary\\Desktop\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
         "source": "C:\\Users\\Gary\\Desktop\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_expanded_menu_layout.xml"
     },
@@ -258,6 +262,10 @@
     {
         "merged": "C:\\Users\\Gary\\Desktop\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
         "source": "C:\\Users\\Gary\\Desktop\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_lines.xml"
+    },
+    {
+        "merged": "C:\\Users\\Gary\\Desktop\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\res\\merged\\debug\\layout\\searchlistdisplay_activity.xml",
+        "source": "C:\\Users\\Gary\\Desktop\\AndroidApp\\IngredientsToDishes\\app\\src\\main\\res\\layout\\searchlistdisplay_activity.xml"
     },
     {
         "merged": "E:\\Users\\Gary\\AndroidStudioProjects\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",

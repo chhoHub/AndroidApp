@@ -1616,7 +1616,7 @@ containing a value of this type.
         public static final int RecipeButtons=0x7f0c0054;
         public static final int RecipeIcon=0x7f0c0052;
         public static final int TimerIcon=0x7f0c0053;
-        public static final int TimerTitle=0x7f0c007c;
+        public static final int TimerTitle=0x7f0c007e;
         public static final int action0=0x7f0c006d;
         public static final int action_bar=0x7f0c0041;
         public static final int action_bar_activity_content=0x7f0c0000;
@@ -1658,6 +1658,8 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f0c0025;
         public static final int expanded_menu=0x7f0c0038;
         public static final int fav=0x7f0c0058;
+        public static final int foodAdd=0x7f0c007b;
+        public static final int foodname=0x7f0c007a;
         public static final int foodpic=0x7f0c0059;
         public static final int home=0x7f0c0004;
         public static final int homeAsUp=0x7f0c000d;
@@ -1682,7 +1684,7 @@ containing a value of this type.
         public static final int radio=0x7f0c003b;
         public static final int ratingBar=0x7f0c0057;
         public static final int recipeTitle=0x7f0c0056;
-        public static final int recipes=0x7f0c007b;
+        public static final int recipes=0x7f0c007d;
         public static final int requiredingredients=0x7f0c005b;
         public static final int screen=0x7f0c0014;
         public static final int scrollIndicatorDown=0x7f0c0035;
@@ -1702,7 +1704,7 @@ containing a value of this type.
         public static final int searchlist=0x7f0c0068;
         public static final int searchsection=0x7f0c0066;
         public static final int select_dialog_listview=0x7f0c004f;
-        public static final int selectrecipe=0x7f0c007a;
+        public static final int selectrecipe=0x7f0c007c;
         public static final int shortcut=0x7f0c003a;
         public static final int showCustom=0x7f0c000f;
         public static final int showHome=0x7f0c0010;
@@ -1719,10 +1721,10 @@ containing a value of this type.
         public static final int text2=0x7f0c0075;
         public static final int textSpacerNoButtons=0x7f0c0034;
         public static final int time=0x7f0c0073;
-        public static final int timeGrid=0x7f0c007d;
-        public static final int timerPause=0x7f0c007f;
-        public static final int timerReset=0x7f0c0080;
-        public static final int timerStart=0x7f0c007e;
+        public static final int timeGrid=0x7f0c007f;
+        public static final int timerPause=0x7f0c0081;
+        public static final int timerReset=0x7f0c0082;
+        public static final int timerStart=0x7f0c0080;
         public static final int title=0x7f0c002a;
         public static final int title_template=0x7f0c002f;
         public static final int topPanel=0x7f0c002e;
@@ -1777,12 +1779,14 @@ containing a value of this type.
         public static final int notification_template_media=0x7f040022;
         public static final int notification_template_part_chronometer=0x7f040023;
         public static final int notification_template_part_time=0x7f040024;
-        public static final int select_dialog_item_material=0x7f040025;
-        public static final int select_dialog_multichoice_material=0x7f040026;
-        public static final int select_dialog_singlechoice_material=0x7f040027;
-        public static final int selectingrecipe_activity=0x7f040028;
-        public static final int support_simple_spinner_dropdown_item=0x7f040029;
-        public static final int timer_activity=0x7f04002a;
+        public static final int searchlistdisplay_activity=0x7f040025;
+        public static final int select_dialog_item_material=0x7f040026;
+        public static final int select_dialog_multichoice_material=0x7f040027;
+        public static final int select_dialog_singlechoice_material=0x7f040028;
+        public static final int selectingrecipe_activity=0x7f040029;
+        public static final int support_simple_spinner_dropdown_item=0x7f04002a;
+        public static final int timer_activity=0x7f04002b;
+        public static final int yourlistdisplay_activity=0x7f04002c;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;

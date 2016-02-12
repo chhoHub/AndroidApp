@@ -211,7 +211,8 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:src="@drawable/timer"/>
+            android:src="@drawable/timer"
+            />
 
     </LinearLayout>
 

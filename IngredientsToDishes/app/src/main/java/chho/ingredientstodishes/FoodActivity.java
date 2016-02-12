@@ -53,5 +53,6 @@ public class FoodActivity extends Activity {
                 startActivity(intent);
             }
         });
+
     }
 }
