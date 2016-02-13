@@ -505,6 +505,7 @@ int id expand_activities_button 0x7f0c0025
 int id expanded_menu 0x7f0c0038
 int id fav 0x7f0c0058
 int id foodAdd 0x7f0c007b
+int id foodDel 0x7f0c0083
 int id foodname 0x7f0c007a
 int id foodpic 0x7f0c0059
 int id home 0x7f0c0004

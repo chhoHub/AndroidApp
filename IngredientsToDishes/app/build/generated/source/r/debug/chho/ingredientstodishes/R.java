@@ -1659,6 +1659,7 @@ containing a value of this type.
         public static final int expanded_menu=0x7f0c0038;
         public static final int fav=0x7f0c0058;
         public static final int foodAdd=0x7f0c007b;
+        public static final int foodDel=0x7f0c0083;
         public static final int foodname=0x7f0c007a;
         public static final int foodpic=0x7f0c0059;
         public static final int home=0x7f0c0004;

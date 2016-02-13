@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,10 +18,12 @@ public class YourListAdapter extends ArrayAdapter<String> {
 
     private Context context;
     private List<String> yourlist;
-    public YourListAdapter(Context context, int resource, List<String> ingreds){
+    private List<String> foodlist;
+    public YourListAdapter(Context context, int resource, List<String> ingreds, List<String> fulllist){
         super(context,resource, ingreds);
         this.context = context;
         this.yourlist = ingreds;
+        this.foodlist = fulllist;
     }
 
     @Override
@@ -32,18 +36,22 @@ public class YourListAdapter extends ArrayAdapter<String> {
             final String food = yourlist.get(position);
 
             TextView nameTextView = (TextView) view.findViewById(R.id.foodname);
+            Button delete = (Button)view.findViewById(R.id.foodDel);
             nameTextView.setText(food);
 
-            nameTextView.setOnClickListener(new View.OnClickListener() {
+            delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
+                    foodlist.add(food);
                     yourlist.remove(position);
+                    Collections.sort(foodlist);
                     notifyDataSetChanged();
 
                 }
             });
         }
+        Collections.sort(foodlist);
 
         return view;
     }
