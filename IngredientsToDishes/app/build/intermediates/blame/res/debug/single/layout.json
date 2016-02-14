@@ -88,6 +88,10 @@
         "source": "C:\\Users\\Gary\\Desktop\\AndroidApp\\IngredientsToDishes\\app\\src\\main\\res\\layout\\selectingrecipe_activity.xml"
     },
     {
+        "merged": "E:\\Users\\Gary\\AndroidStudioProjects\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\res\\merged\\debug\\layout\\recipelistdisplay_activity.xml",
+        "source": "E:\\Users\\Gary\\AndroidStudioProjects\\AndroidApp\\IngredientsToDishes\\app\\src\\main\\res\\layout\\recipelistdisplay_activity.xml"
+    },
+    {
         "merged": "E:\\Users\\Gary\\AndroidStudioProjects\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
         "source": "E:\\Users\\Gary\\AndroidStudioProjects\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_select_dialog_material.xml"
     },
@@ -234,6 +238,10 @@
     {
         "merged": "E:\\Users\\Gary\\AndroidStudioProjects\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\res\\merged\\debug\\layout\\favoriterecipe_activity.xml",
         "source": "E:\\Users\\Gary\\AndroidStudioProjects\\AndroidApp\\IngredientsToDishes\\app\\src\\main\\res\\layout\\favoriterecipe_activity.xml"
+    },
+    {
+        "merged": "E:\\Users\\Gary\\AndroidStudioProjects\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\res\\merged\\debug\\layout\\favlistdisplay_activity.xml",
+        "source": "E:\\Users\\Gary\\AndroidStudioProjects\\AndroidApp\\IngredientsToDishes\\app\\src\\main\\res\\layout\\favlistdisplay_activity.xml"
     },
     {
         "merged": "E:\\Users\\Gary\\AndroidStudioProjects\\AndroidApp\\IngredientsToDishes\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",

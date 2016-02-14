@@ -5,15 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import java.io.Serializable;
 
 /**
  * Created by Gary on 2/1/2016.
  */
-public class FoodActivity extends Activity {
+public class FoodActivity extends Activity implements Serializable {
     private ImageButton fav;
     private ImageButton ingred;
     private ImageButton recipe;
     private ImageButton timer;
+    private Recipe food;
+    private TextView recipeTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,13 @@ public class FoodActivity extends Activity {
         ingred = (ImageButton)findViewById(R.id.IngredientsIcon);
         recipe = (ImageButton)findViewById(R.id.RecipeIcon);
         timer = (ImageButton)findViewById(R.id.TimerIcon);
+
+        food = (Recipe)getIntent().getExtras().getSerializable("Recipe");
+
+        recipeTitle = (TextView)findViewById(R.id.recipeTitle);
+        recipeTitle.setText(food.getName());
+
+
 
         fav.setOnClickListener(new View.OnClickListener() {
             @Override
