@@ -25,22 +25,34 @@
         </activity>
         <activity
             android:name="chho.ingredientstodishes.FavoritesActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="chho.ingredientstodishes.IngredientsActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
         <activity
             android:name="chho.ingredientstodishes.SelectingRecipeActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="chho.ingredientstodishes.FoodActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="chho.ingredientstodishes.TimerActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" >
         </activity>
     </application>

@@ -43,7 +43,7 @@ public class FavoritesActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(FavoritesActivity.this, IngredientsActivity.class);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
         recipe.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +51,7 @@ public class FavoritesActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(FavoritesActivity.this, SelectingRecipeActivity.class);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
         timer.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +59,7 @@ public class FavoritesActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(FavoritesActivity.this, TimerActivity.class);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 

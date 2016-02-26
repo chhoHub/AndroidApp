@@ -27,13 +27,12 @@
         android:layout_weight="2"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/searchbar"
+
+        <SearchView
+            android:id="@+id/searchview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10sp"
-            android:hint="Search"
-            android:layout_weight="0"/>
+            android:layout_height="wrap_content">
+        </SearchView>
 
         <ListView
             android:id="@+id/searchlist"
