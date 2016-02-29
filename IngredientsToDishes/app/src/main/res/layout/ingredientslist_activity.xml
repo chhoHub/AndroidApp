@@ -6,7 +6,6 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp">
 
-
     <TextView
         android:id="@+id/Ingredsection"
         android:layout_width="wrap_content"
@@ -30,6 +29,7 @@
 
         <SearchView
             android:id="@+id/searchview"
+            android:queryHint="Search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </SearchView>

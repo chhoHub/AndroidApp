@@ -1,14 +1,13 @@
-Abiyuch
+﻿Abiyuch
 Acerola
 Acerola juice
 Ahipa
 Amaranth
 American groundnut
 Anchovy
-Animal fat
 Aonori
 Apple juice
-Apples
+Apple
 Applesauce
 Apricot nectar
 Apricots
@@ -22,7 +21,7 @@ Azuki bean
 Bacon
 Bacon and beef sticks
 Bamboo shoot
-Bananas
+Banana
 Barbecue loaf
 Basa
 Basil
@@ -259,7 +258,6 @@ Lamb's lettuce
 Lamb's quarters
 Lamprey
 Land cress
-Lard
 Laver (Gim)
 Lebanon bologna
 Leek
@@ -346,7 +344,7 @@ Oheloberries
 Okra
 Olive fruit
 Olive loaf
-Olives
+Olive
 Onion
 Orache
 Orange Pineapple Juice Blend
@@ -354,7 +352,7 @@ Orange juice
 Orange peel
 Orange roughy
 Orange-grapefruit juice
-Oranges
+Orange
 Ostrich
 Oven-roasted chicken breast roll
 Oyster
@@ -424,7 +422,7 @@ Rambutan
 Rapini (broccoli rabe)
 Raspberries
 Rhubarb
-Rice and Wheat cereal bar
+Rice
 Ricebean
 Roast beef
 Roast beef spread
@@ -574,3 +572,16 @@ Yardlong bean
 Yarrow
 Yogurt
 Zwieback
+Corn
+Sugar
+Coconut
+Beef
+Pork Chop
+Zucchini
+Mushroom
+Pepper
+Prime Rib
+Beef Brisket
+Beef Ribs
+Beef Tongue
+Ground Beef

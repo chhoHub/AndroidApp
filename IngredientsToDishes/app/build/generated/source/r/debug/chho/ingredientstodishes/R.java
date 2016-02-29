@@ -1609,7 +1609,7 @@ containing a value of this type.
         public static final int RecipeButtons=0x7f0d0054;
         public static final int RecipeIcon=0x7f0d0052;
         public static final int TimerIcon=0x7f0d0053;
-        public static final int TimerTitle=0x7f0d007d;
+        public static final int TimerTitle=0x7f0d007b;
         public static final int action0=0x7f0d0069;
         public static final int action_bar=0x7f0d0041;
         public static final int action_bar_activity_content=0x7f0d0000;
@@ -1636,7 +1636,7 @@ containing a value of this type.
         public static final int checkbox=0x7f0d0039;
         public static final int chronometer=0x7f0d0070;
         public static final int clear=0x7f0d0068;
-        public static final int clock=0x7f0d0083;
+        public static final int clock=0x7f0d0081;
         public static final int collapseActionView=0x7f0d001c;
         public static final int contentPanel=0x7f0d0031;
         public static final int cookingTime=0x7f0d005a;
@@ -1660,7 +1660,7 @@ containing a value of this type.
         public static final int foodpic=0x7f0d0059;
         public static final int home=0x7f0d0004;
         public static final int homeAsUp=0x7f0d000d;
-        public static final int hour=0x7f0d007f;
+        public static final int hour=0x7f0d007d;
         public static final int icon=0x7f0d0029;
         public static final int ifRoom=0x7f0d001d;
         public static final int image=0x7f0d0026;
@@ -1672,7 +1672,7 @@ containing a value of this type.
         public static final int list_item=0x7f0d0028;
         public static final int media_actions=0x7f0d006c;
         public static final int middle=0x7f0d001a;
-        public static final int minute=0x7f0d0080;
+        public static final int minute=0x7f0d007e;
         public static final int multiply=0x7f0d0013;
         public static final int never=0x7f0d001e;
         public static final int none=0x7f0d000e;
@@ -1684,9 +1684,8 @@ containing a value of this type.
         public static final int ratingBar=0x7f0d0057;
         public static final int recipeTitle=0x7f0d0056;
         public static final int recipename=0x7f0d005d;
-        public static final int recipes=0x7f0d007c;
+        public static final int recipes=0x7f0d007a;
         public static final int requiredingredients=0x7f0d005b;
-        public static final int resultfoodAdd=0x7f0d007a;
         public static final int screen=0x7f0d0014;
         public static final int scrollIndicatorDown=0x7f0d0035;
         public static final int scrollIndicatorUp=0x7f0d0032;
@@ -1702,13 +1701,12 @@ containing a value of this type.
         public static final int search_src_text=0x7f0d004a;
         public static final int search_voice_btn=0x7f0d004e;
         public static final int searchlist=0x7f0d0064;
-        public static final int searchresulttextview=0x7f0d0079;
         public static final int searchsection=0x7f0d0062;
         public static final int searchview=0x7f0d0063;
-        public static final int second=0x7f0d0081;
+        public static final int second=0x7f0d007f;
         public static final int select_dialog_listview=0x7f0d004f;
-        public static final int selectrecipe=0x7f0d007b;
-        public static final int settimebutton=0x7f0d0082;
+        public static final int selectrecipe=0x7f0d0079;
+        public static final int settimebutton=0x7f0d0080;
         public static final int shortcut=0x7f0d003a;
         public static final int showCustom=0x7f0d000f;
         public static final int showHome=0x7f0d0010;
@@ -1725,10 +1723,10 @@ containing a value of this type.
         public static final int text2=0x7f0d0071;
         public static final int textSpacerNoButtons=0x7f0d0034;
         public static final int time=0x7f0d006f;
-        public static final int timeGrid=0x7f0d007e;
-        public static final int timerPause=0x7f0d0085;
-        public static final int timerReset=0x7f0d0086;
-        public static final int timerStart=0x7f0d0084;
+        public static final int timeGrid=0x7f0d007c;
+        public static final int timerPause=0x7f0d0083;
+        public static final int timerReset=0x7f0d0084;
+        public static final int timerStart=0x7f0d0082;
         public static final int title=0x7f0d002a;
         public static final int title_template=0x7f0d002f;
         public static final int topPanel=0x7f0d002e;
@@ -1786,14 +1784,13 @@ containing a value of this type.
         public static final int notification_template_part_time=0x7f040025;
         public static final int recipelistdisplay_activity=0x7f040026;
         public static final int searchlistdisplay_activity=0x7f040027;
-        public static final int searchresult_activity=0x7f040028;
-        public static final int select_dialog_item_material=0x7f040029;
-        public static final int select_dialog_multichoice_material=0x7f04002a;
-        public static final int select_dialog_singlechoice_material=0x7f04002b;
-        public static final int selectingrecipe_activity=0x7f04002c;
-        public static final int support_simple_spinner_dropdown_item=0x7f04002d;
-        public static final int timer_activity=0x7f04002e;
-        public static final int yourlistdisplay_activity=0x7f04002f;
+        public static final int select_dialog_item_material=0x7f040028;
+        public static final int select_dialog_multichoice_material=0x7f040029;
+        public static final int select_dialog_singlechoice_material=0x7f04002a;
+        public static final int selectingrecipe_activity=0x7f04002b;
+        public static final int support_simple_spinner_dropdown_item=0x7f04002c;
+        public static final int timer_activity=0x7f04002d;
+        public static final int yourlistdisplay_activity=0x7f04002e;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
