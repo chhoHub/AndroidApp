@@ -17,6 +17,8 @@ public class FoodActivity extends Activity implements Serializable {
     private ImageButton ingred;
     private ImageButton recipe;
     private ImageButton timer;
+    private ImageButton back;
+    private ImageButton setfav;
     private Recipe food;
     private TextView recipeTitle;
 
@@ -29,6 +31,8 @@ public class FoodActivity extends Activity implements Serializable {
         ingred = (ImageButton)findViewById(R.id.IngredientsIcon);
         recipe = (ImageButton)findViewById(R.id.RecipeIcon);
         timer = (ImageButton)findViewById(R.id.TimerIcon);
+        back = (ImageButton) findViewById(R.id.back);
+        setfav = (ImageButton) findViewById(R.id.fav);
 
         food = (Recipe)getIntent().getExtras().getSerializable("Recipe");
 
@@ -63,6 +67,20 @@ public class FoodActivity extends Activity implements Serializable {
             public void onClick(View v) {
                 Intent intent = new Intent(FoodActivity.this, TimerActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        setfav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

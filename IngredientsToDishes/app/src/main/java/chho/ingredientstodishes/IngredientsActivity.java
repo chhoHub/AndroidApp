@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import android.os.Handler;
 import android.widget.*;
@@ -38,7 +39,6 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
 
     private List<String> foodlist;
     private List<String> yourlist = new ArrayList<String>();
-
 
 
 
@@ -106,8 +106,6 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //yourlist = new ArrayList<String>();
-                //foodlist = new ArrayList<>(ingredlist);
                 finish();
                 startActivity(getIntent());
             }
@@ -170,9 +168,14 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
             // Specify the view where we want the results to go
             int[] to = new int[] {R.id.searchresulttextview};
 
+            List<String> stringList = new ArrayList<String>(Arrays.asList(from));
+            foodListAdapter = new FoodListAdapter(this, R.layout.searchlistdisplay_activity, stringList, yourlist);
+            ToplistView.setAdapter(foodListAdapter);
+
+
             // Create a simple cursor adapter to keep the search data
-            SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.layout.searchresult_activity, cursor, from, to);
-            ToplistView.setAdapter(cursorAdapter);
+           // SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this, R.layout.searchresult_activity, cursor, from, to);
+           // ToplistView.setAdapter(cursorAdapter);
 
 
 
@@ -188,7 +191,7 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
                     Toast.makeText(IngredientsActivity.this, selectedName, Toast.LENGTH_SHORT).show();
 
                     // Set the default adapter
-                    ToplistView.setAdapter(foodListAdapter);
+                    //ToplistView.setAdapter(foodListAdapter);
 
                     // Find the position for the original list by the selected name from search
                     for (int pos = 0; pos < foodlist.size(); pos++) {
