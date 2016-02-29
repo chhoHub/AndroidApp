@@ -1,4 +1,3 @@
-﻿Abiyuch
 Acerola
 Acerola juice
 Ahipa
@@ -6,8 +5,8 @@ Amaranth
 American groundnut
 Anchovy
 Aonori
-Apple juice
 Apple
+Apple juice
 Applesauce
 Apricot nectar
 Apricots
@@ -26,6 +25,10 @@ Barbecue loaf
 Basa
 Basil
 Bass
+Beef
+Beef Brisket
+Beef Ribs
+Beef Tongue
 Beef sausage
 Beerwurst
 Beetroot
@@ -86,8 +89,6 @@ Cereals ready-to-eat
 Chaya
 Chayote
 Cheese
-Cheese food
-Cheese product
 Cheese sauce
 Cheese spread
 Cheese substitute
@@ -110,11 +111,13 @@ Chorizo
 Chrysanthemum (leaves)
 Clementines
 Cockle
+Coconut
 Cod
 Collard greens
 Common bean
 Common purslane
 Conch
+Corn
 Corn salad
 Corned beef loaf
 Courgette flowers
@@ -196,6 +199,7 @@ Grape (leaves)
 Gravy
 Greater plantain
 Green bean (French bean)
+Ground Beef
 Ground turkey
 Groundcherries
 Grouper
@@ -205,7 +209,7 @@ Guava nectar
 Guava sauce
 Guavas
 Guinea hen
-HORMEL Pillow Pak Sliced Turkey Pepperoni
+Sliced Turkey Pepperoni
 Haddock
 Halibut
 Ham
@@ -261,17 +265,17 @@ Land cress
 Laver (Gim)
 Lebanon bologna
 Leek
+Lemon
 Lemon juice
 Lemon juice from concentrate
 Lemon peel
 Lemongrass
-Lemons
 Lentil
 Lettuce
 Light ice cream
 Lima bean
+Lime
 Lime juice
-Limes
 Lingcod
 Litchis
 Liver cheese
@@ -311,8 +315,8 @@ Mayonnaise
 Meat drippings (lard
 Meatballs
 Melokhia
+Melon
 Melon balls
-Melons
 Milk
 Milk and cereal bar
 Milk dessert bar
@@ -328,6 +332,7 @@ Mozuku
 Mulberries
 Mullet
 Mung bean
+Mushroom
 Mussel
 Mustard
 Nance
@@ -342,18 +347,17 @@ Octopus
 Ogonori
 Oheloberries
 Okra
+Olive
 Olive fruit
 Olive loaf
-Olive
 Onion
 Orache
+Orange
 Orange Pineapple Juice Blend
 Orange juice
 Orange peel
 Orange roughy
 Orange-grapefruit juice
-Orange
-Ostrich
 Oven-roasted chicken breast roll
 Oyster
 Papaya
@@ -370,9 +374,10 @@ Pea
 Peach nectar
 Peaches
 Peanut
+Pear
 Pear nectar
 Pearl onion
-Pears
+Pepper
 Peppered loaf
 Peppermint
 Pepperoni
@@ -396,20 +401,22 @@ Pomegranate juice
 Pomegranates
 Pomfret
 Pompano
+Pork
+Pork Chop
 Pork and beef sausage
 Pork and turkey sausage
 Pork sausage
 Potato
 Potato onion
 Potato soup
-Poultry
 Poultry salad sandwich spread
 Prairie turnip
 Prawns
 Prickly pears
+Prime Rib
+Prune
 Prune juice
 Prune puree
-Prunes
 Prussian asparagus
 Pummelo
 Pumpkin
@@ -417,7 +424,7 @@ Quail
 Quinces
 Radicchio
 Radish
-Raisins
+Raisin
 Rambutan
 Rapini (broccoli rabe)
 Raspberries
@@ -425,7 +432,6 @@ Rhubarb
 Rice
 Ricebean
 Roast beef
-Roast beef spread
 Rose-apples
 Roselle
 Rosemary
@@ -462,12 +468,6 @@ Shad
 Shad roe
 Shallot
 Shark
-Shortening bread
-Shortening cake mix
-Shortening confectionery
-Shortening frying (heavy duty)
-Shortening household soybean (hydrogenated) and palm
-Shortening industrial
 Shrimp
 Sierra Leone bologi
 Skate
@@ -497,6 +497,7 @@ Squash blossoms
 Squid
 Strawberries
 Sturgeon
+Sugar
 Sugar-apples
 Summer purslane
 Surimi
@@ -571,17 +572,6 @@ Yao choy
 Yardlong bean
 Yarrow
 Yogurt
-Zwieback
-Corn
-Sugar
-Coconut
-Beef
-Pork Chop
 Zucchini
-Mushroom
-Pepper
-Prime Rib
-Beef Brisket
-Beef Ribs
-Beef Tongue
-Ground Beef
+Zwieback
+﻿Abiyuch
