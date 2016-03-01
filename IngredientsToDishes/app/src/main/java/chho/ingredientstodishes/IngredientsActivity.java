@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import java.io.BufferedReader;
@@ -14,6 +15,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import android.widget.*;
+
+import chho.ingredientstodishes.data.IngredientData;
+import chho.ingredientstodishes.data.RecipeData;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.JacksonConverterFactory;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * Created by Gary on 2/1/2016.
@@ -28,10 +37,13 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
     private FoodListAdapter foodListAdapter;
     private YourListAdapter yourListAdapter;
     private Button clear;
+    private Button update;
     private Button addfood;
     private List<String> foodlist;
     private List<String> yourlist = new ArrayList<String>();
     private SearchView searchView;
+
+    private Food2ForkAPIServiceSearchIngredients service;
 
     private IngredientDBHelper ingredientDBHelper;
     private SQLiteDatabase db;
@@ -46,6 +58,7 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
         recipe = (ImageButton)findViewById(R.id.RecipeIcon);
         timer = (ImageButton)findViewById(R.id.TimerIcon);
         clear = (Button)findViewById(R.id.clear);
+        update = (Button) findViewById(R.id.update);
         addfood = (Button) findViewById(R.id.foodAdd);
         ToplistView = (ListView) findViewById(R.id.searchlist);
         BottomlistView = (ListView) findViewById(R.id.ingredlist);
@@ -111,6 +124,39 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
             public void onClick(View v) {
                 finish();
                 startActivity(getIntent());
+            }
+        });
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String ingredients = TextUtils.join(", ", yourlist);
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://food2fork.com/")
+                        .addConverterFactory(JacksonConverterFactory.create())
+                        .build();
+
+                service = retrofit.create(Food2ForkAPIServiceSearchIngredients.class);
+                Call<IngredientData> IngredientDataCall = service.getSearchedRecpies(
+                        "  ",
+                        ingredients,
+                        'r',
+                        1
+                );
+
+                IngredientDataCall.enqueue(new Callback<IngredientData>() {
+                    @Override
+                    public void onResponse(Response<IngredientData> response) {
+                        response.body().getRecipes().getRecipe()
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+                        Log.e("TEST", "Failed to get the response Here. ", t);
+                    }
+                });
             }
         });
 
