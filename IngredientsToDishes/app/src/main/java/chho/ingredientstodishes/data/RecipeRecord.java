@@ -1,20 +1,32 @@
 package chho.ingredientstodishes.data;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import chho.ingredientstodishes.Recipe;
+import java.util.List;
 
 /**
  * Created by Gary on 2/29/2016.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RecipeRecord {
-    private List<Recipe> recipe;
 
-    public List<Recipe> getRecipe() {
-        return recipe;
+    private int count;
+
+    private List<RecipeData> recipes;
+
+    public int getCount() {
+        return count;
     }
 
-    public void setRecipe(List<Recipe> recipe) {
-        this.recipe = recipe;
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public List<RecipeData> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(List<RecipeData> recipes) {
+        this.recipes = recipes;
     }
 }

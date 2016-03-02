@@ -50,8 +50,7 @@
 
         <activity
             android:name=".FoodActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance">
+            android:screenOrientation="portrait">
 
         </activity>
 

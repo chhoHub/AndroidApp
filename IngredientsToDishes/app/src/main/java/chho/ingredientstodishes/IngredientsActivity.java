@@ -9,15 +9,20 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.SearchView;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import android.widget.*;
 
-import chho.ingredientstodishes.data.IngredientData;
 import chho.ingredientstodishes.data.RecipeData;
+import chho.ingredientstodishes.data.RecipeRecord;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.JacksonConverterFactory;
@@ -42,6 +47,12 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
     private List<String> foodlist;
     private List<String> yourlist = new ArrayList<String>();
     private SearchView searchView;
+
+    private List<String> recipe_id = new ArrayList<String>();
+    private List<String> recipe_name = new ArrayList<String>();
+    private List<String> recipe_sourceurl = new ArrayList<String>();
+    private List<String> recipe_imageurl = new ArrayList<String>();
+    private List<RecipeData> listofrecipes;
 
     private Food2ForkAPIServiceSearchIngredients service;
 
@@ -139,26 +150,52 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
                         .build();
 
                 service = retrofit.create(Food2ForkAPIServiceSearchIngredients.class);
-                Call<IngredientData> IngredientDataCall = service.getSearchedRecpies(
-                        "  ",
+                Call<RecipeRecord> IngredientDataCall = service.getSearchedRecipes(
+                        "67e5d1f0c2964d3d7c8873db72e60248",
                         ingredients,
                         'r',
                         1
                 );
-
-                IngredientDataCall.enqueue(new Callback<IngredientData>() {
+                IngredientDataCall.enqueue(new Callback<RecipeRecord>() {
                     @Override
-                    public void onResponse(Response<IngredientData> response) {
-                        response.body().getRecipes().getRecipe()
+                    public void onResponse(Response<RecipeRecord> response) {
+                        RecipeRecord recipe = response.body();
+
+                        int count = recipe.getCount();
+                        listofrecipes = recipe.getRecipes();
+
+                        for (int i = 0; i < count; i++) {
+                            recipe_id.add(listofrecipes.get(i).getRecipe_id());
+
+                            if(listofrecipes.get(i).getTitle().indexOf("&#8217;") >= 0){
+                                String temp = listofrecipes.get(i).getTitle().replace("&#8217;", "'");
+                                recipe_name.add(temp);
+                            }
+                            else{
+                                recipe_name.add(listofrecipes.get(i).getTitle());
+                            }
+                            recipe_sourceurl.add(listofrecipes.get(i).getSource_url());
+                            recipe_imageurl.add(listofrecipes.get(i).getImage_url());
+                        }
+
+                        Intent i = new Intent(IngredientsActivity.this, SelectingRecipeActivity.class);
+
+                        i.putExtra("recipe_id", (Serializable) recipe_id);
+                        i.putExtra("recipe_name", (Serializable) recipe_name);
+                        i.putExtra("recipe_sourceurl", (Serializable) recipe_sourceurl);
+                        i.putExtra("recipe_imageurl", (Serializable) recipe_imageurl);
+                        startActivity(i);
+
                     }
 
                     @Override
                     public void onFailure(Throwable t) {
-                        Log.e("TEST", "Failed to get the response Here. ", t);
+                        Log.e("TEST", "Failed to get the response. ", t);
                     }
                 });
             }
         });
+
 
         searchView.setIconified(false);
         searchView.setOnQueryTextListener(this);

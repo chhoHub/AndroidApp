@@ -50,8 +50,6 @@ public class FavAdapter extends ArrayAdapter<Recipe> implements Serializable {
                 intent.putExtra("Recipe", (Serializable) obj);
 
                 host.startActivity(intent);
-
-
             }
         });
 

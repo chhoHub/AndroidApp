@@ -1,6 +1,6 @@
 package chho.ingredientstodishes;
 
-import chho.ingredientstodishes.data.IngredientData;
+import chho.ingredientstodishes.data.RecipeRecord;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -10,11 +10,11 @@ import retrofit2.http.Query;
  */
 public interface Food2ForkAPIServiceSearchIngredients {
     @GET("api/search")
-    Call<IngredientData> getSearchedRecpies(
+    Call<RecipeRecord> getSearchedRecipes(
             @Query("key") String api_key,
             @Query("q") String ingredients, //separated by commas
             @Query("sort") char style, //r for Rating or t for trend
-            @Query("page") int pagenum
+            @Query("page") int page
     );
 
 

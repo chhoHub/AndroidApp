@@ -3,30 +3,30 @@ package chho.ingredientstodishes;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-import chho.ingredientstodishes.data.RecipeData;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.JacksonConverterFactory;
-import retrofit2.Response;
-import retrofit2.Retrofit;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Gary on 2/1/2016.
  */
-public class SelectingRecipeActivity extends Activity {
+public class SelectingRecipeActivity extends Activity implements Serializable {
     private ImageButton fav;
     private ImageButton ingred;
     private ImageButton recipe;
     private ImageButton timer;
 
-    private Food2ForkAPIServiceGetRecipe service;
     private ListView listView;
+    private List<String> recipe_name  = new ArrayList<String>();
+    private List<String> recipe_sourceurl = new ArrayList<String>();
+    private List<String> recipe_id = new ArrayList<String>();
+    private List<String> recipe_imageurl = new ArrayList<String>();
+
+    private RecipeAdapter recipeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,18 @@ public class SelectingRecipeActivity extends Activity {
         timer = (ImageButton)findViewById(R.id.TimerIcon);
 
         listView = (ListView) findViewById(R.id.recipes);
+
+        try {
+            recipe_name = (List<String>) getIntent().getExtras().getSerializable("recipe_name");
+            recipe_id = (List<String>) getIntent().getExtras().getSerializable("recipe_id");
+            recipe_sourceurl = (List<String>) getIntent().getExtras().getSerializable("recipe_sourceurl");
+            recipe_imageurl = (List<String>) getIntent().getExtras().getSerializable("recipe_imageurl");
+            recipeAdapter = new RecipeAdapter(SelectingRecipeActivity.this,R.layout.selectingrecipe_activity,recipe_id,recipe_name,recipe_sourceurl,recipe_imageurl);
+            listView.setAdapter(recipeAdapter);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
 
         fav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +65,7 @@ public class SelectingRecipeActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(SelectingRecipeActivity.this, IngredientsActivity.class);
                 startActivity(intent);
-              //  finish();
+                finish();
             }
         });
         timer.setOnClickListener(new View.OnClickListener() {
@@ -62,29 +74,6 @@ public class SelectingRecipeActivity extends Activity {
                 Intent intent = new Intent(SelectingRecipeActivity.this, TimerActivity.class);
                 startActivity(intent);
                 //finish();
-            }
-        });
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://food2fork.com/")
-                .addConverterFactory(JacksonConverterFactory.create())
-                .build();
-
-        service = retrofit.create(Food2ForkAPIServiceGetRecipe.class);
-        Call<RecipeData> RecipeDataCall = service.getSearchedRecpies(
-                "  "//,
-                );
-
-        RecipeDataCall.enqueue(new Callback<RecipeData>() {
-            @Override
-            public void onResponse(Response<RecipeData> response) {
-                RecipeAdapter recipeAdapter = new RecipeAdapter(SelectingRecipeActivity.this,R.layout.selectingrecipe_activity, response.body().getRecipes().getRecipe());
-                listView.setAdapter(recipeAdapter);
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                Log.e("TEST", "Failed to get the response. ", t);
             }
         });
     }
