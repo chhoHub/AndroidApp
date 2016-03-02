@@ -1,8 +1,11 @@
 package chho.ingredientstodishes;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,9 +42,12 @@ public class FoodActivity extends Activity implements Serializable {
     private Context context = FoodActivity.this;
     private String imageurl;
     private String recipeid;
+    private String recipename;
     private String[] ingredients;
+    private String ingredientsToString;
     private Food2ForkAPIServiceRecipeIngreds service;
     private SavedRecipeDbHelper savedRecipeDbHelper;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +64,12 @@ public class FoodActivity extends Activity implements Serializable {
         recipeTitle = (TextView)findViewById(R.id.recipeTitle);
         listView = (ListView) findViewById(R.id.recipeingreds);
 
+        savedRecipeDbHelper = new SavedRecipeDbHelper(this);
+
         //food = (Recipe)getIntent().getExtras().getSerializable("Recipe");
 
-
-        recipeTitle.setText((String) getIntent().getExtras().getSerializable("recipename"));
+        recipename = (String) getIntent().getExtras().getSerializable("recipename");
+        recipeTitle.setText(recipename);
         imageurl = (String) getIntent().getExtras().getSerializable("recipeimg");
         recipeid = (String) getIntent().getExtras().getSerializable("recipeid");
 
@@ -82,6 +90,7 @@ public class FoodActivity extends Activity implements Serializable {
                 ingredients = recipeIngredients.getRecipe().getIngredients();
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1,android.R.id.text1,ingredients);
                 listView.setAdapter(adapter);
+                ingredientsToString = convertArrayToString(ingredients);
 
             }
 
@@ -135,8 +144,36 @@ public class FoodActivity extends Activity implements Serializable {
             @Override
             public void onClick(View v) {
 
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID, recipeid);
+                contentValues.put(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_IMAGEURL, imageurl);
+                contentValues.put(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_NAME, recipename);
+                contentValues.put(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_INGREDIENTS,ingredientsToString);
+                SQLiteDatabase db = savedRecipeDbHelper.getWritableDatabase();
+
+                String Query = "Select * from " + SavedRecipeEntry.TABLE_NAME + " where " + SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID + " = " + "" +recipeid;
+                Cursor cursor = db.rawQuery(Query, null);
+                if(cursor.getCount() <= 0){
+                    db.insert(SavedRecipeEntry.TABLE_NAME, "null", contentValues);
+                    Log.i("TABLE", "data created!");
+                }
+                else{
+                    db.delete(SavedRecipeEntry.TABLE_NAME, SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID + " = " + recipeid, null);
+                    Log.i("TABLE", "data deleted!");
+                }
             }
         });
 
+    }
+    public String convertArrayToString(String[] array){
+        String str = "";
+        for (int i = 0;i<array.length; i++) {
+            str = str+array[i];
+            // Do not append comma at the end of last element
+            if(i<array.length-1){
+                str = str+"__,__";
+            }
+        }
+        return str;
     }
 }

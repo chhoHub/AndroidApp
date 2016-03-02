@@ -2,9 +2,11 @@ package chho.ingredientstodishes;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -22,6 +24,9 @@ public class FavoritesActivity extends Activity {
     private ListView listView;
     private FavAdapter favAdapter;
 
+    private SavedRecipeDbHelper savedRecipeDbHelper;
+    private SQLiteDatabase db;
+
     private String[] ingreds = {"Tuna", "Cheese", "Bread"};
     private String[] steps = {"Put tuna on bread", "Put cheese on tuna", "Bake in oven"};
     private List<Recipe> myfavs = new ArrayList<Recipe>(){{
@@ -37,6 +42,22 @@ public class FavoritesActivity extends Activity {
         ingred = (ImageButton)findViewById(R.id.IngredientsIcon);
         recipe = (ImageButton)findViewById(R.id.RecipeIcon);
         timer = (ImageButton)findViewById(R.id.TimerIcon);
+
+
+        savedRecipeDbHelper = new SavedRecipeDbHelper(this);
+        SQLiteDatabase db = savedRecipeDbHelper.getReadableDatabase();
+
+        String count = "SELECT COUNT(*) FROM " + SavedRecipeEntry.TABLE_NAME;
+        Cursor mcursor = db.rawQuery(count, null);
+        mcursor.moveToFirst();
+        int icount = mcursor.getInt(0);
+        if(icount <= 0){
+            Log.i("TABLE", "database is empty!");
+        }
+        else{
+            Log.i("TABLE", "Not empty!");
+        }
+
 
         ingred.setOnClickListener(new View.OnClickListener() {
             @Override
