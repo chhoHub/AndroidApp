@@ -17,7 +17,6 @@ import java.util.List;
 public class SelectingRecipeActivity extends Activity implements Serializable {
     private ImageButton fav;
     private ImageButton ingred;
-    private ImageButton recipe;
     private ImageButton timer;
 
     private ListView listView;
@@ -35,7 +34,6 @@ public class SelectingRecipeActivity extends Activity implements Serializable {
 
         fav = (ImageButton)findViewById(R.id.FavoriteIcon);
         ingred = (ImageButton)findViewById(R.id.IngredientsIcon);
-        recipe = (ImageButton)findViewById(R.id.RecipeIcon);
         timer = (ImageButton)findViewById(R.id.TimerIcon);
 
         listView = (ListView) findViewById(R.id.recipes);
@@ -57,7 +55,6 @@ public class SelectingRecipeActivity extends Activity implements Serializable {
             public void onClick(View v) {
                 Intent intent = new Intent(SelectingRecipeActivity.this, FavoritesActivity.class);
                 startActivity(intent);
-               // finish();
             }
         });
         ingred.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +70,6 @@ public class SelectingRecipeActivity extends Activity implements Serializable {
             public void onClick(View v) {
                 Intent intent = new Intent(SelectingRecipeActivity.this, TimerActivity.class);
                 startActivity(intent);
-                //finish();
             }
         });
     }

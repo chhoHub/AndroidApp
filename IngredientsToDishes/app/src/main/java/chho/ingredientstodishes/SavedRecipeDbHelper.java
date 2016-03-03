@@ -16,7 +16,8 @@ public class SavedRecipeDbHelper extends SQLiteOpenHelper {
                     + SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID + TYPE_TEXT + " , "
                     + SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_NAME + TYPE_TEXT + " , "
                     + SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_IMAGEURL + TYPE_TEXT + " , "
-                    + SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_INGREDIENTS + TYPE_TEXT + ")";
+                    + SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_INGREDIENTS + TYPE_TEXT + " , "
+                    + SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_SOURCEURL + TYPE_TEXT +")";
 
     public SavedRecipeDbHelper(Context context) {
         super(context, "SavedRecipe-db", null, 1);

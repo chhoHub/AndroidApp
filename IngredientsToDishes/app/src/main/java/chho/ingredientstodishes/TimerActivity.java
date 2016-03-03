@@ -17,8 +17,6 @@ public class TimerActivity extends Activity {
     private ImageButton fav;
     private ImageButton ingred;
     private ImageButton recipe;
-    private ImageButton timer;
-    //private Chronometer clock;
     private Button start;
     private Button pause;
     private Button reset;
@@ -41,7 +39,6 @@ public class TimerActivity extends Activity {
         fav = (ImageButton)findViewById(R.id.FavoriteIcon);
         ingred = (ImageButton)findViewById(R.id.IngredientsIcon);
         recipe = (ImageButton)findViewById(R.id.RecipeIcon);
-        timer = (ImageButton)findViewById(R.id.TimerIcon);
         start = (Button) findViewById(R.id.timerStart);
         pause = (Button) findViewById(R.id.timerPause);
         reset = (Button) findViewById(R.id.timerReset);
@@ -57,7 +54,6 @@ public class TimerActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(TimerActivity.this, FavoritesActivity.class);
                 startActivity(intent);
-               // finish();
             }
         });
         ingred.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +61,6 @@ public class TimerActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(TimerActivity.this, IngredientsActivity.class);
                 startActivity(intent);
-               // finish();
             }
         });
         recipe.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +68,6 @@ public class TimerActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(TimerActivity.this, SelectingRecipeActivity.class);
                 startActivity(intent);
-             //   finish();
             }
         });
 
@@ -125,7 +119,6 @@ public class TimerActivity extends Activity {
                             long m = (seconds / 60) % 60;
                             long h = (seconds / (60 * 60)) % 24;
                             clock.setText(String.format("%02d:%02d:%02d", h, m, s));
-
                         }
 
                         @Override

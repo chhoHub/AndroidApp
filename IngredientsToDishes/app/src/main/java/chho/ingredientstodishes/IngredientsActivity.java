@@ -34,7 +34,6 @@ import retrofit2.Retrofit;
  */
 public class IngredientsActivity extends Activity implements SearchView.OnQueryTextListener, SearchView.OnCloseListener{
     private ImageButton fav;
-    private ImageButton ingred;
     private ImageButton recipe;
     private ImageButton timer;
     private ListView ToplistView;
@@ -43,7 +42,6 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
     private YourListAdapter yourListAdapter;
     private Button clear;
     private Button update;
-    private Button addfood;
     private List<String> foodlist;
     private List<String> yourlist = new ArrayList<String>();
     private SearchView searchView;
@@ -65,12 +63,10 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
         this.setContentView(R.layout.ingredientslist_activity);
 
         fav = (ImageButton)findViewById(R.id.FavoriteIcon);
-        ingred = (ImageButton)findViewById(R.id.IngredientsIcon);
         recipe = (ImageButton)findViewById(R.id.RecipeIcon);
         timer = (ImageButton)findViewById(R.id.TimerIcon);
         clear = (Button)findViewById(R.id.clear);
         update = (Button) findViewById(R.id.update);
-        addfood = (Button) findViewById(R.id.foodAdd);
         ToplistView = (ListView) findViewById(R.id.searchlist);
         BottomlistView = (ListView) findViewById(R.id.ingredlist);
         searchView = (SearchView) findViewById(R.id.searchview);

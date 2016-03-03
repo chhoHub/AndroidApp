@@ -1,7 +1,6 @@
 package chho.ingredientstodishes;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -23,30 +22,21 @@ import java.util.List;
 public class FavAdapter extends ArrayAdapter<String> implements Serializable {
 
     private Context context;
-    private List<Recipe> myrecipes;
     private List<String> recipenames;
     private List<String> recipeids;
     private List<String> recipeingreds;
     private List<String> recipeimgs;
+    private List<String> recipeurls;
     private SavedRecipeDbHelper savedRecipeDbHelper;
 
-
-    //favAdapter = new FavAdapter(this, R.layout.favlistdisplay_activity, recipenames, recipeids, recipeingreds, recipeimg)
-
-//    public FavAdapter(Context context, int resource, List<Recipe> recipes){
-//        super(context, resource, recipes);
-//        this.context = context;
-//        this.myrecipes = recipes;
-//
-//    }
-
-    public FavAdapter(Context context, int resource, List<String> recipenames, List<String> recipeids, List<String> recipeingreds, List<String> recipeimgs){
+    public FavAdapter(Context context, int resource, List<String> recipenames, List<String> recipeids, List<String> recipeingreds, List<String> recipeimgs, List<String> recipeurls){
         super(context, resource, recipenames);
         this.context = context;
         this.recipeids = recipeids;
         this.recipeimgs = recipeimgs;
         this.recipeingreds = recipeingreds;
         this.recipenames = recipenames;
+        this.recipeurls = recipeurls;
         savedRecipeDbHelper = new SavedRecipeDbHelper(context);
     }
 
@@ -59,6 +49,7 @@ public class FavAdapter extends ArrayAdapter<String> implements Serializable {
         final String recipeid = recipeids.get(position);
         final String recipeimg = recipeimgs.get(position);
         final String recipeingred = recipeingreds.get(position);
+        final String recipeurl = recipeurls.get(position);
 
         final TextView nameTextView = (TextView) view.findViewById(R.id.recipename);
         Button delete = (Button)view.findViewById(R.id.foodDel);
@@ -74,6 +65,7 @@ public class FavAdapter extends ArrayAdapter<String> implements Serializable {
                 i.putExtra("recipeimg", (Serializable) recipeimg);
                 i.putExtra("recipeid", (Serializable) recipeid);
                 i.putExtra("recipeingred", (Serializable) recipeingred);
+                i.putExtra("recipesource", (Serializable) recipeurl);
                 host.startActivity(i);
 
                 notifyDataSetChanged();
@@ -88,6 +80,7 @@ public class FavAdapter extends ArrayAdapter<String> implements Serializable {
                 recipeids.remove(position);
                 recipeimgs.remove(position);
                 recipeingreds.remove(position);
+                recipeurls.remove(position);
 
                 SQLiteDatabase db = savedRecipeDbHelper.getWritableDatabase();
 

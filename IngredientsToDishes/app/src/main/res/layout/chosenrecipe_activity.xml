@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="2">
+        android:layout_weight="0">
 
         <ImageButton
             android:id="@+id/back"
@@ -20,9 +20,10 @@
 
         <TextView
             android:id="@+id/recipeTitle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_gravity="center"
             android:textSize="20sp"
             android:layout_weight="1"
             android:textAppearance="@android:style/TextAppearance.Large"
@@ -42,34 +43,10 @@
         android:id="@+id/foodpic"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="125dp"
+        android:layout_height="180dp"
         android:layout_gravity="center_horizontal"
         android:scaleType="centerCrop" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total Cooking Time: "
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/cookingTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0 minutes"
-            android:textSize="20sp"/>
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -90,7 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="Ingredients"/>
+                android:text="Ingredients"
+                android:layout_marginBottom="10dp"/>
 
             <ListView
                 android:id="@+id/recipeingreds"
@@ -111,15 +89,25 @@
             android:layout_weight="3">
 
             <TextView
+                android:id="@+id/directiontitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Directions"/>
+                android:text="Directions"
+                android:layout_marginBottom="10dp"/>
 
-            <ListView
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="120dp"
-                android:layout_weight="1">
-            </ListView>
+                android:layout_height="wrap_content"
+                android:text="Click the link below to see recipe!"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="url"
+                android:autoLink="web"/>
+
 
         </LinearLayout>
 

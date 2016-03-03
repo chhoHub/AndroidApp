@@ -11,14 +11,12 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by Gary on 2/1/2016.
  */
 public class FavoritesActivity extends Activity {
-    private ImageButton fav;
     private ImageButton ingred;
     private ImageButton recipe;
     private ImageButton timer;
@@ -28,23 +26,25 @@ public class FavoritesActivity extends Activity {
     private SavedRecipeDbHelper savedRecipeDbHelper;
     private SQLiteDatabase db;
 
-    private String[] ingreds = {"Tuna", "Cheese", "Bread"};
-    private String[] steps = {"Put tuna on bread", "Put cheese on tuna", "Bake in oven"};
-    private List<Recipe> myfavs = new ArrayList<Recipe>(){{
-        add(new Recipe("Tuna Melt", ingreds, steps, 5 ));
-    }};
-
     private List<String> recipenames = new ArrayList<String>();
-    private List<String> recipeids = new ArrayList<String>();;
-    private List<String> recipeingreds = new ArrayList<String>();;
-    private List<String> recipeimg = new ArrayList<String>();;
+    private List<String> recipeids = new ArrayList<String>();
+    private List<String> recipeingreds = new ArrayList<String>();
+    private List<String> recipeimg = new ArrayList<String>();
+    private List<String> recipeurl = new ArrayList<String>();
+
+    private String[] columns = {
+            SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID,
+            SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_NAME,
+            SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_INGREDIENTS,
+            SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_IMAGEURL,
+            SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_SOURCEURL
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.favoriterecipe_activity);
 
-        fav = (ImageButton)findViewById(R.id.FavoriteIcon);
         ingred = (ImageButton)findViewById(R.id.IngredientsIcon);
         recipe = (ImageButton)findViewById(R.id.RecipeIcon);
         timer = (ImageButton)findViewById(R.id.TimerIcon);
@@ -63,10 +63,11 @@ public class FavoritesActivity extends Activity {
         else{
             Log.i("TABLE", "Not empty!");
 
-            recipeingreds = readIngredientListFromDb(); // list of list(String) of ingredients
-            recipeids = readRecipeIDFromDb();
-            recipeimg = readRecipeimgFromDb();
-            recipenames = readRecipeNameFromDb();
+            recipeids = readFromDb(columns[0]);
+            recipenames = readFromDb(columns[1]);
+            recipeingreds = readFromDb(columns[2]);
+            recipeimg = readFromDb(columns[3]);
+            recipeurl = readFromDb(columns[4]);
         }
 
 
@@ -74,8 +75,6 @@ public class FavoritesActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FavoritesActivity.this, IngredientsActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
             }
@@ -84,8 +83,6 @@ public class FavoritesActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FavoritesActivity.this, SelectingRecipeActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
             }
@@ -94,17 +91,14 @@ public class FavoritesActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FavoritesActivity.this, TimerActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
             }
         });
 
         listView = (ListView) findViewById(R.id.favorites);
-        //favAdapter = new FavAdapter(this, R.layout.favlistdisplay_activity, myfavs);
 
-        favAdapter = new FavAdapter(this, R.layout.favlistdisplay_activity, recipenames, recipeids, recipeingreds, recipeimg);
+        favAdapter = new FavAdapter(this, R.layout.favlistdisplay_activity, recipenames, recipeids, recipeingreds, recipeimg, recipeurl);
 
         listView.setAdapter(favAdapter);
 
@@ -113,103 +107,28 @@ public class FavoritesActivity extends Activity {
     @Override
     public void onResume(){
 
-        recipeingreds = readIngredientListFromDb(); // list of list(String) of ingredients
-        recipeids = readRecipeIDFromDb();
-        recipeimg = readRecipeimgFromDb();
-        recipenames = readRecipeNameFromDb();
+        recipeids = readFromDb(columns[0]);
+        recipenames = readFromDb(columns[1]);
+        recipeingreds = readFromDb(columns[2]);
+        recipeimg = readFromDb(columns[3]);
+        recipeurl = readFromDb(columns[4]);
 
-        Log.i("Hi", "Hello data resumed");
-        favAdapter = new FavAdapter(this, R.layout.favlistdisplay_activity, recipenames, recipeids, recipeingreds, recipeimg);
+        favAdapter = new FavAdapter(this, R.layout.favlistdisplay_activity, recipenames, recipeids, recipeingreds, recipeimg, recipeurl);
         listView.setAdapter(favAdapter);
         super.onResume();
     }
 
-
-    private List<String> readIngredientListFromDb(){
-
-        List<String> ingredients = new ArrayList<String>();
-        String[] columns = {
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID,
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_NAME,
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_INGREDIENTS,
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_IMAGEURL
-        };
+    private List<String> readFromDb(String columnname){
+        List<String> stuff = new ArrayList<String>();
         SQLiteDatabase db = savedRecipeDbHelper.getReadableDatabase();
-        Cursor cursor = db.query(SavedRecipeEntry.TABLE_NAME,columns,null,null,null,null,SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_INGREDIENTS);
+        Cursor cursor = db.query(SavedRecipeEntry.TABLE_NAME,columns,null,null,null,null,columnname);
         cursor.moveToFirst();
 
-        while(!cursor.isAfterLast()) {
-            String name = cursor.getString(cursor.getColumnIndex(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_INGREDIENTS));
-            ingredients.add(name);
+        while(!cursor.isAfterLast()){
+            String name = cursor.getString(cursor.getColumnIndex(columnname));
+            stuff.add(name);
             cursor.moveToNext();
         }
-
-        return ingredients;
-    }
-
-    private List<String> readRecipeNameFromDb(){
-
-        List<String> recipename = new ArrayList<String>();
-        String[] columns = {
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID,
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_NAME,
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_INGREDIENTS,
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_IMAGEURL
-        };
-        SQLiteDatabase db = savedRecipeDbHelper.getReadableDatabase();
-        Cursor cursor = db.query(SavedRecipeEntry.TABLE_NAME,columns,null,null,null,null,SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_NAME);
-        cursor.moveToFirst();
-
-        while(!cursor.isAfterLast()) {
-            String name = cursor.getString(cursor.getColumnIndex(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_NAME));
-            recipename.add(name);
-            cursor.moveToNext();
-        }
-
-        return recipename;
-    }
-
-    private List<String> readRecipeIDFromDb(){
-
-        List<String> recipeid = new ArrayList<String>();
-        String[] columns = {
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID,
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_NAME,
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_INGREDIENTS,
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_IMAGEURL
-        };
-        SQLiteDatabase db = savedRecipeDbHelper.getReadableDatabase();
-        Cursor cursor = db.query(SavedRecipeEntry.TABLE_NAME,columns,null,null,null,null,SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID);
-        cursor.moveToFirst();
-
-        while(!cursor.isAfterLast()) {
-            String name = cursor.getString(cursor.getColumnIndex(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID));
-            recipeid.add(name);
-            cursor.moveToNext();
-        }
-
-        return recipeid;
-    }
-
-    private List<String> readRecipeimgFromDb(){
-
-        List<String> recipeimg = new ArrayList<String>();
-        String[] columns = {
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID,
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_NAME,
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_INGREDIENTS,
-                SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_IMAGEURL
-        };
-        SQLiteDatabase db = savedRecipeDbHelper.getReadableDatabase();
-        Cursor cursor = db.query(SavedRecipeEntry.TABLE_NAME,columns,null,null,null,null,SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_IMAGEURL);
-        cursor.moveToFirst();
-
-        while(!cursor.isAfterLast()) {
-            String name = cursor.getString(cursor.getColumnIndex(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_IMAGEURL));
-            recipeimg.add(name);
-            cursor.moveToNext();
-        }
-
-        return recipeimg;
+        return stuff;
     }
 }

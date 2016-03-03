@@ -36,12 +36,13 @@ public class FoodActivity extends Activity implements Serializable {
     private ImageButton timer;
     private ImageButton back;
     private ImageButton setfav;
-    private Recipe food;
     private TextView recipeTitle;
+    private TextView recipeurl;
     private ImageView foodimg;
     private ListView listView;
     private Context context = FoodActivity.this;
     private String imageurl;
+    private String sourceurl;
     private String recipeid;
     private String recipename;
     private String[] ingredients;
@@ -64,6 +65,7 @@ public class FoodActivity extends Activity implements Serializable {
         foodimg = (ImageView) findViewById(R.id.foodpic);
         recipeTitle = (TextView)findViewById(R.id.recipeTitle);
         listView = (ListView) findViewById(R.id.recipeingreds);
+        recipeurl = (TextView) findViewById(R.id.url);
 
         savedRecipeDbHelper = new SavedRecipeDbHelper(this);
 
@@ -71,6 +73,9 @@ public class FoodActivity extends Activity implements Serializable {
         recipeTitle.setText(recipename);
         imageurl = (String) getIntent().getExtras().getSerializable("recipeimg");
         recipeid = (String) getIntent().getExtras().getSerializable("recipeid");
+        sourceurl = (String) getIntent().getExtras().getSerializable("recipesource");
+
+        recipeurl.setText(sourceurl);
 
         String longingred = (String) getIntent().getExtras().getSerializable("recipeingred");
 
@@ -116,8 +121,6 @@ public class FoodActivity extends Activity implements Serializable {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FoodActivity.this, FavoritesActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -147,8 +150,7 @@ public class FoodActivity extends Activity implements Serializable {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
-                //finish();
+                finish();
             }
         });
 
@@ -161,6 +163,7 @@ public class FoodActivity extends Activity implements Serializable {
                 contentValues.put(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_IMAGEURL, imageurl);
                 contentValues.put(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_NAME, recipename);
                 contentValues.put(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_INGREDIENTS,ingredientsToString);
+                contentValues.put(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_SOURCEURL, sourceurl);
                 SQLiteDatabase db = savedRecipeDbHelper.getWritableDatabase();
 
                 String Query = "Select * from " + SavedRecipeEntry.TABLE_NAME + " where " + SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID + " = " + "'" +recipeid + "'";

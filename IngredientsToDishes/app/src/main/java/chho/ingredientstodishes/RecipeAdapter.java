@@ -41,28 +41,10 @@ public class RecipeAdapter extends ArrayAdapter<String> {
         final String recipename = recipe_name.get(position);
         final String recipeimage = recipe_imageurl.get(position);
         final String recipeid = recipe_id.get(position);
+        final String recipesource = recipe_sourceurl.get(position);
 
         final TextView nameTextView = (TextView) view.findViewById(R.id.recipename);
         nameTextView.setText(recipename);
-
-//        Call<RecipeIngredients> RecipeIngredDataCall = serviceAPI.getRecipeIngreds(
-//                "8de033bf118b3d4c13a70c2401faa23b",
-//                recipeid
-//        );
-//        RecipeIngredDataCall.enqueue(new retrofit2.Callback<RecipeIngredients>() {
-//            @Override
-//            public void onResponse(Response<RecipeIngredients> response) {
-//                RecipeIngredients recipeIngredients = response.body();
-//                ingredients = recipeIngredients.getRecipeIngredientData().getIngredients();
-//                Log.i("INGREDIENTS", ingredients);
-//            }
-//
-//            @Override
-//            public void onFailure(Throwable t) {
-//                Log.e("TEST", "Failed to get the response. ", t);
-//            }
-//        });
-
 
         nameTextView.setOnClickListener(new View.OnClickListener() {
 
@@ -73,22 +55,10 @@ public class RecipeAdapter extends ArrayAdapter<String> {
                 i.putExtra("recipename", recipename);
                 i.putExtra("recipeimg", (Serializable) recipeimage);
                 i.putExtra("recipeid", (Serializable) recipeid);
+                i.putExtra("recipesource", (Serializable) recipesource);
                 host.startActivity(i);
             }
         });
-
-//        select.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Activity host = (Activity) nameTextView.getContext();
-//                Intent intent = new Intent(host, FoodActivity.class);
-//
-//                Recipe obj = myrecipes.get(position);
-//                intent.putExtra("Recipe", (Serializable) obj);
-//
-//                host.startActivity(intent);
-//            }
-//        });
 
         return view;
     }
