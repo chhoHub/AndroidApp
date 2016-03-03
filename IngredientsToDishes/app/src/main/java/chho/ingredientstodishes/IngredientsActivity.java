@@ -171,6 +171,14 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
                                 String temp = listofrecipes.get(i).getTitle().replace("&#8217;", "'");
                                 recipe_name.add(temp);
                             }
+                            else if(listofrecipes.get(i).getTitle().indexOf("&amp;") >= 0){
+                                String temp = listofrecipes.get(i).getTitle().replace("&amp;", "&");
+                                recipe_name.add(temp);
+                            }
+                            else if(listofrecipes.get(i).getTitle().indexOf("&#233;") >= 0){
+                                String temp = listofrecipes.get(i).getTitle().replace("&#233;", "e");
+                                recipe_name.add(temp);
+                            }
                             else{
                                 recipe_name.add(listofrecipes.get(i).getTitle());
                             }

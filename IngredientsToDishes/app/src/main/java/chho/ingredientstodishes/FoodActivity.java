@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -66,39 +67,47 @@ public class FoodActivity extends Activity implements Serializable {
 
         savedRecipeDbHelper = new SavedRecipeDbHelper(this);
 
-        //food = (Recipe)getIntent().getExtras().getSerializable("Recipe");
-
         recipename = (String) getIntent().getExtras().getSerializable("recipename");
         recipeTitle.setText(recipename);
         imageurl = (String) getIntent().getExtras().getSerializable("recipeimg");
         recipeid = (String) getIntent().getExtras().getSerializable("recipeid");
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://food2fork.com/")
-                .addConverterFactory(JacksonConverterFactory.create())
-                .build();
-        service = retrofit.create(Food2ForkAPIServiceRecipeIngreds.class);
-        Call<RecipeIngredients> RecipeIngredDataCall = service.getRecipeIngreds(
-                "8de033bf118b3d4c13a70c2401faa23b",
-                recipeid
-        );
-        RecipeIngredDataCall.enqueue(new retrofit2.Callback<RecipeIngredients>() {
-            @Override
-            public void onResponse(Response<RecipeIngredients> response) {
-                RecipeIngredients recipeIngredients = response.body();
+        String longingred = (String) getIntent().getExtras().getSerializable("recipeingred");
 
-                ingredients = recipeIngredients.getRecipe().getIngredients();
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1,android.R.id.text1,ingredients);
-                listView.setAdapter(adapter);
-                ingredientsToString = convertArrayToString(ingredients);
+        if(longingred != null) {
+            ingredients = convertStringToArray(longingred);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, android.R.id.text1, ingredients);
+            listView.setAdapter(adapter);
+            ingredientsToString = convertArrayToString(ingredients);
+        }
+        else {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://food2fork.com/")
+                    .addConverterFactory(JacksonConverterFactory.create())
+                    .build();
+            service = retrofit.create(Food2ForkAPIServiceRecipeIngreds.class);
+            Call<RecipeIngredients> RecipeIngredDataCall = service.getRecipeIngreds(
+                    "8de033bf118b3d4c13a70c2401faa23b",
+                    recipeid
+            );
+            RecipeIngredDataCall.enqueue(new retrofit2.Callback<RecipeIngredients>() {
+                @Override
+                public void onResponse(Response<RecipeIngredients> response) {
+                    RecipeIngredients recipeIngredients = response.body();
 
-            }
+                    ingredients = recipeIngredients.getRecipe().getIngredients();
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, android.R.id.text1, ingredients);
+                    listView.setAdapter(adapter);
+                    ingredientsToString = convertArrayToString(ingredients);
 
-            @Override
-            public void onFailure(Throwable t) {
-                Log.e("TEST", "Failed to get the response. ", t);
-            }
-        });
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    Log.e("TEST", "Failed to get the response. ", t);
+                }
+            });
+        }
 
         Picasso.with(context).load(imageurl).into(foodimg);
 
@@ -107,6 +116,8 @@ public class FoodActivity extends Activity implements Serializable {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FoodActivity.this, FavoritesActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -136,7 +147,8 @@ public class FoodActivity extends Activity implements Serializable {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
+                //finish();
             }
         });
 
@@ -151,15 +163,19 @@ public class FoodActivity extends Activity implements Serializable {
                 contentValues.put(SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_INGREDIENTS,ingredientsToString);
                 SQLiteDatabase db = savedRecipeDbHelper.getWritableDatabase();
 
-                String Query = "Select * from " + SavedRecipeEntry.TABLE_NAME + " where " + SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID + " = " + "" +recipeid;
+                String Query = "Select * from " + SavedRecipeEntry.TABLE_NAME + " where " + SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID + " = " + "'" +recipeid + "'";
                 Cursor cursor = db.rawQuery(Query, null);
-                if(cursor.getCount() <= 0){
+                if (cursor.getCount() <= 0){
                     db.insert(SavedRecipeEntry.TABLE_NAME, "null", contentValues);
                     Log.i("TABLE", "data created!");
-                }
-                else{
-                    db.delete(SavedRecipeEntry.TABLE_NAME, SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID + " = " + recipeid, null);
+                    Toast.makeText(context, "Recipe added!",
+                            Toast.LENGTH_SHORT).show();
+
+                } else {
+                    db.delete(SavedRecipeEntry.TABLE_NAME, SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID + " = " + "'" +recipeid + "'", null);
                     Log.i("TABLE", "data deleted!");
+                    Toast.makeText(context, "Recipe removed!",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -175,5 +191,10 @@ public class FoodActivity extends Activity implements Serializable {
             }
         }
         return str;
+    }
+
+    public String[] convertStringToArray(String str){
+        String[] arr = str.split("__,__");
+        return arr;
     }
 }

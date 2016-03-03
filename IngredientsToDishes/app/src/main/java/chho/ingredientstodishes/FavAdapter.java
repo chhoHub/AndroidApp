@@ -1,8 +1,12 @@
 package chho.ingredientstodishes;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +20,34 @@ import java.util.List;
 /**
  * Created by Gary on 2/13/2016.
  */
-public class FavAdapter extends ArrayAdapter<Recipe> implements Serializable {
+public class FavAdapter extends ArrayAdapter<String> implements Serializable {
 
     private Context context;
     private List<Recipe> myrecipes;
+    private List<String> recipenames;
+    private List<String> recipeids;
+    private List<String> recipeingreds;
+    private List<String> recipeimgs;
+    private SavedRecipeDbHelper savedRecipeDbHelper;
 
-    public FavAdapter(Context context, int resource, List<Recipe> recipes){
-        super(context, resource, recipes);
+
+    //favAdapter = new FavAdapter(this, R.layout.favlistdisplay_activity, recipenames, recipeids, recipeingreds, recipeimg)
+
+//    public FavAdapter(Context context, int resource, List<Recipe> recipes){
+//        super(context, resource, recipes);
+//        this.context = context;
+//        this.myrecipes = recipes;
+//
+//    }
+
+    public FavAdapter(Context context, int resource, List<String> recipenames, List<String> recipeids, List<String> recipeingreds, List<String> recipeimgs){
+        super(context, resource, recipenames);
         this.context = context;
-        this.myrecipes = recipes;
-
+        this.recipeids = recipeids;
+        this.recipeimgs = recipeimgs;
+        this.recipeingreds = recipeingreds;
+        this.recipenames = recipenames;
+        savedRecipeDbHelper = new SavedRecipeDbHelper(context);
     }
 
     @Override
@@ -33,7 +55,10 @@ public class FavAdapter extends ArrayAdapter<Recipe> implements Serializable {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.favlistdisplay_activity, parent, false);
 
-        final String recipename = myrecipes.get(position).getName();
+        final String recipename = recipenames.get(position);
+        final String recipeid = recipeids.get(position);
+        final String recipeimg = recipeimgs.get(position);
+        final String recipeingred = recipeingreds.get(position);
 
         final TextView nameTextView = (TextView) view.findViewById(R.id.recipename);
         Button delete = (Button)view.findViewById(R.id.foodDel);
@@ -44,20 +69,37 @@ public class FavAdapter extends ArrayAdapter<Recipe> implements Serializable {
             public void onClick(View v) {
 
                 Activity host = (Activity) nameTextView.getContext();
-                Intent intent = new Intent(host, FoodActivity.class);
+                Intent i = new Intent(host, FoodActivity.class);
+                i.putExtra("recipename", recipename);
+                i.putExtra("recipeimg", (Serializable) recipeimg);
+                i.putExtra("recipeid", (Serializable) recipeid);
+                i.putExtra("recipeingred", (Serializable) recipeingred);
+                host.startActivity(i);
 
-                Recipe obj = myrecipes.get(position);
-                intent.putExtra("Recipe", (Serializable) obj);
-
-                host.startActivity(intent);
+                notifyDataSetChanged();
+                //host.finish();
             }
         });
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myrecipes.remove(position);
+                recipenames.remove(position);
+                recipeids.remove(position);
+                recipeimgs.remove(position);
+                recipeingreds.remove(position);
+
+                SQLiteDatabase db = savedRecipeDbHelper.getWritableDatabase();
+
+                String Query = "Select * from " + SavedRecipeEntry.TABLE_NAME + " where " + SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID + " = "  + "'"+ recipeid + "'";
+                Cursor cursor = db.rawQuery(Query, null);
+                if(cursor.getCount() > 0){
+                    db.delete(SavedRecipeEntry.TABLE_NAME, SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID + " = " + "'" + recipeid + "'", null);
+                    Log.i("TABLE", "data deleted!");
+                }
+
                 notifyDataSetChanged();
+
             }
         });
 
