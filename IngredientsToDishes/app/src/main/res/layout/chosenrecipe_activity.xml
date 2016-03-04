@@ -108,6 +108,14 @@
                 android:text="url"
                 android:autoLink="web"/>
 
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/F2F"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="Powered By Food2Fork.com"/>
+
 
         </LinearLayout>
 

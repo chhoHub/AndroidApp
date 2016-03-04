@@ -241,6 +241,7 @@ public class TimerActivity extends Activity {
 
             @Override
             public void onFinish() {
+                current = 0;
                 String stuff = reminder.getText().toString();
                 sendNotification(stuff);
             }

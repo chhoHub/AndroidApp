@@ -77,6 +77,12 @@ public class FoodActivity extends Activity implements Serializable {
 
         recipeurl.setText(sourceurl);
 
+        if(checkFavorited())
+            setfav.setImageDrawable(getResources().getDrawable(android.R.drawable.btn_star_big_on));
+        else
+            setfav.setImageDrawable(getResources().getDrawable(android.R.drawable.btn_star_big_off));
+
+
         String longingred = (String) getIntent().getExtras().getSerializable("recipeingred");
 
         if(longingred != null) {
@@ -173,12 +179,14 @@ public class FoodActivity extends Activity implements Serializable {
                     Log.i("TABLE", "data created!");
                     Toast.makeText(context, "Recipe added!",
                             Toast.LENGTH_SHORT).show();
+                    setfav.setImageDrawable(getResources().getDrawable(android.R.drawable.btn_star_big_on));
 
                 } else {
                     db.delete(SavedRecipeEntry.TABLE_NAME, SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID + " = " + "'" +recipeid + "'", null);
                     Log.i("TABLE", "data deleted!");
                     Toast.makeText(context, "Recipe removed!",
                             Toast.LENGTH_SHORT).show();
+                    setfav.setImageDrawable(getResources().getDrawable(android.R.drawable.btn_star_big_off));
                 }
             }
         });
@@ -199,5 +207,16 @@ public class FoodActivity extends Activity implements Serializable {
     public String[] convertStringToArray(String str){
         String[] arr = str.split("__,__");
         return arr;
+    }
+
+    public boolean checkFavorited(){
+        SQLiteDatabase db = savedRecipeDbHelper.getWritableDatabase();
+
+        String Query = "Select * from " + SavedRecipeEntry.TABLE_NAME + " where " + SavedRecipeEntry.SAVEDRECIPE_COLUMN_NAME_ID + " = " + "'" +recipeid + "'";
+        Cursor cursor = db.rawQuery(Query, null);
+        if (cursor.getCount() <= 0)
+            return false;
+
+        return true;
     }
 }
