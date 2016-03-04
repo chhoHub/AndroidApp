@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.List;
@@ -52,7 +53,7 @@ public class FavAdapter extends ArrayAdapter<String> implements Serializable {
         final String recipeurl = recipeurls.get(position);
 
         final TextView nameTextView = (TextView) view.findViewById(R.id.recipename);
-        Button delete = (Button)view.findViewById(R.id.foodDel);
+        final Button delete = (Button)view.findViewById(R.id.foodDel);
         nameTextView.setText(recipename);
 
         nameTextView.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +93,8 @@ public class FavAdapter extends ArrayAdapter<String> implements Serializable {
                 }
 
                 notifyDataSetChanged();
+                Toast.makeText(delete.getContext(), "Recipe deleted!",
+                        Toast.LENGTH_SHORT).show();
 
             }
         });

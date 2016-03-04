@@ -1,14 +1,21 @@
 package chho.ingredientstodishes;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Gary on 2/1/2016.
@@ -27,8 +34,9 @@ public class TimerActivity extends Activity {
     private EditText hour;
     private EditText min;
     private EditText sec;
+    private EditText reminder;
     private long totalTimeCountInMilliseconds;
-    private long current;
+    private long current = 0;
     private boolean isPaused = false;
 
     @Override
@@ -47,6 +55,7 @@ public class TimerActivity extends Activity {
         min = (EditText) findViewById(R.id.minute);
         sec = (EditText) findViewById(R.id.second);
         setTime = (Button) findViewById(R.id.settimebutton);
+        reminder = (EditText) findViewById(R.id.texthere);
 
 
         fav.setOnClickListener(new View.OnClickListener() {
@@ -91,42 +100,63 @@ public class TimerActivity extends Activity {
                 pause.setText("Pause");
                 isPaused = false;
                 current = 0;
-                setTimer();
-                startTimer();
+
+                if(validTime()) {
+                    setTimer();
+                    Toast.makeText(TimerActivity.this, "Timer started!",
+                            Toast.LENGTH_SHORT).show();
+
+                    startTimer();
+                }
             }
         });
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(!isPaused) {
-                    isPaused = true;
-                    pause.setText("Resume");
-                    countDownTimer.cancel();
-                }
-                else {
-                    isPaused = false;
-                    pause.setText("Pause");
-                    countDownTimer = new CountDownTimer(current, 500) {
-                        // 500 means, onTick function will be called at every 500
-                        // milliseconds
-
-                        @Override
-                        public void onTick(long leftTimeInMilliseconds) {
-                            long seconds = leftTimeInMilliseconds / 1000;
-                            current = leftTimeInMilliseconds;
-                            long s = seconds % 60;
-                            long m = (seconds / 60) % 60;
-                            long h = (seconds / (60 * 60)) % 24;
-                            clock.setText(String.format("%02d:%02d:%02d", h, m, s));
+                if (current > 0) {
+                    if (!isPaused) {
+                        try {
+                            countDownTimer.cancel();
+                            isPaused = true;
+                            pause.setText("Resume");
+                            Toast.makeText(TimerActivity.this, "Timer paused!",
+                                    Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            Toast.makeText(pause.getContext(), "Nothing to pause!",
+                                    Toast.LENGTH_SHORT).show();
                         }
+                    } else {
+                        isPaused = false;
+                        pause.setText("Pause");
 
-                        @Override
-                        public void onFinish() {
+                        Toast.makeText(TimerActivity.this, "Timer resumed!",
+                                Toast.LENGTH_SHORT).show();
 
-                        }
-                    }.start();
+                        countDownTimer = new CountDownTimer(current, 500) {
 
+                            @Override
+                            public void onTick(long leftTimeInMilliseconds) {
+                                long seconds = leftTimeInMilliseconds / 1000;
+                                current = leftTimeInMilliseconds;
+                                long s = seconds % 60;
+                                long m = (seconds / 60) % 60;
+                                long h = (seconds / (60 * 60)) % 24;
+                                clock.setText(String.format("%02d:%02d:%02d", h, m, s));
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                current = 0;
+                                String stuff = reminder.getText().toString();
+                                sendNotification(stuff);
+                            }
+                        }.start();
+
+                    }
+                } else{
+                    Toast.makeText(pause.getContext(), "Nothing to pause!",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -140,9 +170,32 @@ public class TimerActivity extends Activity {
                 current = 0;
                 totalTimeCountInMilliseconds = 0;
                 clock.setText(String.format("%02d:%02d:%02d", 0, 0, 0));
+                Toast.makeText(TimerActivity.this, "Timer reset!",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
+    }
+
+    private boolean validTime(){
+
+        int count = 0;
+        if(!hour.getText().toString().equals("")){
+            count = Integer.parseInt(hour.getText().toString());
+        }
+        if(!min.getText().toString().equals("")){
+            count += Integer.parseInt(min.getText().toString());
+        }
+        if(!sec.getText().toString().equals("")){
+            count += Integer.parseInt(sec.getText().toString());
+        }
+
+        if(count > 0)
+            return true;
+
+        Toast.makeText(TimerActivity.this, "Please set time to some value!",
+                Toast.LENGTH_SHORT).show();
+        return false;
     }
 
     private void setTimer() {
@@ -173,8 +226,6 @@ public class TimerActivity extends Activity {
 
     private void startTimer() {
         countDownTimer = new CountDownTimer(totalTimeCountInMilliseconds, 500) {
-            // 500 means, onTick function will be called at every 500
-            // milliseconds
 
             @Override
             public void onTick(long leftTimeInMilliseconds) {
@@ -186,14 +237,40 @@ public class TimerActivity extends Activity {
                 long m = (seconds / 60) % 60;
                 long h = (seconds / (60 * 60)) % 24;
                 clock.setText(String.format("%02d:%02d:%02d", h, m, s));
-
             }
 
             @Override
             public void onFinish() {
+                String stuff = reminder.getText().toString();
+                sendNotification(stuff);
             }
 
         }.start();
 
+    }
+
+    private void sendNotification(String msg) {
+
+        if(msg.equals("")){
+            msg = "Your timer finished!";
+        }
+
+        NotificationManager mNotificationManager = (NotificationManager) this
+                .getSystemService(Context.NOTIFICATION_SERVICE);
+
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
+                new Intent(this, MainActivity.class), 0);
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+                this).setSmallIcon(R.drawable.ic_launcher)
+                .setContentTitle("Ingredients To Dishes!")
+                .setAutoCancel(true)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
+                .setContentText(msg);
+
+        mBuilder.setContentIntent(contentIntent);
+        mNotificationManager.notify(1, mBuilder.build());
+        Log.i("TAG", "Notification sent successfully.");
     }
 }

@@ -51,9 +51,8 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
     private List<String> recipe_sourceurl = new ArrayList<String>();
     private List<String> recipe_imageurl = new ArrayList<String>();
     private List<RecipeData> listofrecipes;
-
+    private Retrofit retrofit;
     private Food2ForkAPIServiceSearchIngredients service;
-
     private IngredientDBHelper ingredientDBHelper;
     private SQLiteDatabase db;
 
@@ -70,6 +69,12 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
         ToplistView = (ListView) findViewById(R.id.searchlist);
         BottomlistView = (ListView) findViewById(R.id.ingredlist);
         searchView = (SearchView) findViewById(R.id.searchview);
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl("http://food2fork.com/")
+                .addConverterFactory(JacksonConverterFactory.create())
+                .build();
+
 
         ingredientDBHelper = new IngredientDBHelper(this);
 
@@ -138,14 +143,9 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
             @Override
             public void onClick(View v) {
 
-                String ingredients = TextUtils.join(", ", yourlist);
-
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://food2fork.com/")
-                        .addConverterFactory(JacksonConverterFactory.create())
-                        .build();
-
+                final String ingredients = TextUtils.join(", ", yourlist);
                 service = retrofit.create(Food2ForkAPIServiceSearchIngredients.class);
+
                 Call<RecipeRecord> IngredientDataCall = service.getSearchedRecipes(
                         "67e5d1f0c2964d3d7c8873db72e60248",
                         ingredients,
@@ -155,41 +155,43 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
                 IngredientDataCall.enqueue(new Callback<RecipeRecord>() {
                     @Override
                     public void onResponse(Response<RecipeRecord> response) {
-                        RecipeRecord recipe = response.body();
+                        final RecipeRecord recipe = response.body();
 
                         int count = recipe.getCount();
-                        listofrecipes = recipe.getRecipes();
 
-                        for (int i = 0; i < count; i++) {
-                            recipe_id.add(listofrecipes.get(i).getRecipe_id());
+                        if (count > 0){
+                            listofrecipes = recipe.getRecipes();
+                            String msg = "" + count + " recipes found!";
 
-                            if(listofrecipes.get(i).getTitle().indexOf("&#8217;") >= 0){
-                                String temp = listofrecipes.get(i).getTitle().replace("&#8217;", "'");
-                                recipe_name.add(temp);
+                            if(ingredients.length() == 0){
+                                msg = "No corresponding recipes found. Highest rating recipes generated!";
                             }
-                            else if(listofrecipes.get(i).getTitle().indexOf("&amp;") >= 0){
-                                String temp = listofrecipes.get(i).getTitle().replace("&amp;", "&");
-                                recipe_name.add(temp);
-                            }
-                            else if(listofrecipes.get(i).getTitle().indexOf("&#233;") >= 0){
-                                String temp = listofrecipes.get(i).getTitle().replace("&#233;", "e");
-                                recipe_name.add(temp);
-                            }
-                            else{
-                                recipe_name.add(listofrecipes.get(i).getTitle());
-                            }
-                            recipe_sourceurl.add(listofrecipes.get(i).getSource_url());
-                            recipe_imageurl.add(listofrecipes.get(i).getImage_url());
+                            Log.i("Size", ingredients);
+                            getRecipes(count, msg);
                         }
+                        else{
+                            Call<RecipeRecord> IngredientDataCall = service.getSearchedRecipes(
+                                    "67e5d1f0c2964d3d7c8873db72e60248",
+                                    "",
+                                    'r',
+                                    1
+                            );
+                            IngredientDataCall.enqueue(new Callback<RecipeRecord>() {
+                                @Override
+                                public void onResponse(Response<RecipeRecord> response) {
+                                    RecipeRecord record = response.body();
+                                    int count = record.getCount();
+                                    listofrecipes = record.getRecipes();
+                                    String msg = "No corresponding recipes found. Highest rating recipes generated!";
+                                    getRecipes(count, msg);
+                                }
 
-                        Intent i = new Intent(IngredientsActivity.this, SelectingRecipeActivity.class);
-
-                        i.putExtra("recipe_id", (Serializable) recipe_id);
-                        i.putExtra("recipe_name", (Serializable) recipe_name);
-                        i.putExtra("recipe_sourceurl", (Serializable) recipe_sourceurl);
-                        i.putExtra("recipe_imageurl", (Serializable) recipe_imageurl);
-                        startActivity(i);
-
+                                @Override
+                                public void onFailure(Throwable t) {
+                                    Log.e("TEST", "Failed to get the response. ", t);
+                                }
+                            });
+                        }
                     }
 
                     @Override
@@ -199,7 +201,6 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
                 });
             }
         });
-
 
         searchView.setIconified(false);
         searchView.setOnQueryTextListener(this);
@@ -214,7 +215,7 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
         ToplistView.setAdapter(foodListAdapter);
     }
 
-    private List<String> readIngredientListFromDb(List<String> mylist){
+    public List<String> readIngredientListFromDb(List<String> mylist){
 
         List<String> ingredients = new ArrayList<String>();
         String[] columns = {
@@ -291,5 +292,59 @@ public class IngredientsActivity extends Activity implements SearchView.OnQueryT
             ToplistView.setAdapter(foodListAdapter);
         }
         return false;
+    }
+
+    public void getRecipes(int count, String msg){
+        recipe_id = new ArrayList<String>();
+        recipe_name = new ArrayList<String>();
+        recipe_imageurl = new ArrayList<String>();
+        recipe_sourceurl = new ArrayList<String>();
+
+        for (int i = 0; i < count; i++) {
+            recipe_id.add(listofrecipes.get(i).getRecipe_id());
+
+            if(listofrecipes.get(i).getTitle().indexOf("&#8217;") >= 0){
+                String temp = listofrecipes.get(i).getTitle().replace("&#8217;", "'");
+                recipe_name.add(temp);
+            }
+            else if(listofrecipes.get(i).getTitle().indexOf("&amp;") >= 0){
+                String temp = listofrecipes.get(i).getTitle().replace("&amp;", "&");
+                recipe_name.add(temp);
+            }
+            else if(listofrecipes.get(i).getTitle().indexOf("&#233;") >= 0){
+                String temp = listofrecipes.get(i).getTitle().replace("&#233;", "e");
+                recipe_name.add(temp);
+            }
+            else if(listofrecipes.get(i).getTitle().indexOf("&#249;") >= 0){
+                String temp = listofrecipes.get(i).getTitle().replace("&#249;", "u");
+                recipe_name.add(temp);
+            }
+            else if(listofrecipes.get(i).getTitle().indexOf("&iacute;") >= 0){
+                String temp = listofrecipes.get(i).getTitle().replace("&iacute;", "i");
+                recipe_name.add(temp);
+            }
+            else if(listofrecipes.get(i).getTitle().indexOf("&#8220;") >= 0){
+                String temp = listofrecipes.get(i).getTitle().replace("&#8220;", "'");
+                recipe_name.add(temp);
+            }
+            else if(listofrecipes.get(i).getTitle().indexOf("&#8221;") >= 0){
+                String temp = listofrecipes.get(i).getTitle().replace("&#8221;", "'");
+                recipe_name.add(temp);
+            }
+            else{
+                recipe_name.add(listofrecipes.get(i).getTitle());
+            }
+            recipe_sourceurl.add(listofrecipes.get(i).getSource_url());
+            recipe_imageurl.add(listofrecipes.get(i).getImage_url());
+        }
+
+        Intent i = new Intent(IngredientsActivity.this, SelectingRecipeActivity.class);
+
+        i.putExtra("recipe_id", (Serializable) recipe_id);
+        i.putExtra("recipe_name", (Serializable) recipe_name);
+        i.putExtra("recipe_sourceurl", (Serializable) recipe_sourceurl);
+        i.putExtra("recipe_imageurl", (Serializable) recipe_imageurl);
+        i.putExtra("toast", (Serializable) msg);
+        startActivity(i);
     }
 }

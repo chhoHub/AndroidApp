@@ -1720,11 +1720,12 @@ containing a value of this type.
         public static final int text=0x7f0d0074;
         public static final int text2=0x7f0d0072;
         public static final int textSpacerNoButtons=0x7f0d0034;
+        public static final int texthere=0x7f0d0082;
         public static final int time=0x7f0d0070;
         public static final int timeGrid=0x7f0d007c;
-        public static final int timerPause=0x7f0d0083;
-        public static final int timerReset=0x7f0d0084;
-        public static final int timerStart=0x7f0d0082;
+        public static final int timerPause=0x7f0d0084;
+        public static final int timerReset=0x7f0d0085;
+        public static final int timerStart=0x7f0d0083;
         public static final int title=0x7f0d002a;
         public static final int title_template=0x7f0d002f;
         public static final int topPanel=0x7f0d002e;

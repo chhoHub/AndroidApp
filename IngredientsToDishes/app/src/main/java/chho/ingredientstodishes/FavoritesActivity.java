@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +60,8 @@ public class FavoritesActivity extends Activity {
         int icount = mcursor.getInt(0);
         if(icount <= 0){
             Log.i("TABLE", "database is empty!");
+            Toast.makeText(FavoritesActivity.this, "There are no favorite recipes! Add one by pressing the star in a chosen recipe!",
+                    Toast.LENGTH_SHORT).show();
         }
         else{
             Log.i("TABLE", "Not empty!");

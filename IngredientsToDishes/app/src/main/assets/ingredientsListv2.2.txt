@@ -1,27 +1,20 @@
-Acerola
-Acerola juice
-Ahipa
+Almond
 Amaranth
-American groundnut
 Anchovy
-Aonori
 Apple
 Apple juice
-Applesauce
+Apple sauce
 Apricot nectar
 Apricots
 Arame
-Arracacha
 Artichoke
 Arugula
 Asparagus
 Avocado
 Azuki bean
 Bacon
-Bacon and beef sticks
 Bamboo shoot
 Banana
-Barbecue loaf
 Basa
 Basil
 Bass
@@ -30,36 +23,29 @@ Beef Brisket
 Beef Ribs
 Beef Tongue
 Beef sausage
-Beerwurst
+Beet greens
 Beetroot
-Beet greens
 Bell pepper
 Bitter gourd
 Bitter melon
 Black cod
-Black-eyed pea
+Black eyed pea
 Blackberries
 Blackberry juice
 Blood sausage
 Blowfish
 Blueberries
 Bluefish
-Bockwurst
-Bok choy
 Bologna
-Bombay duck
-Borage greens
+Borage greens
 Boysenberries
-Bratwurst
-Braunschweiger (a liver sausage)
 Breadfruit
 Bream
 Brill
 Broadleaf arrowhead
 Broccoli
 Broccolini
-Broccolini flowers
-Brotwurst
+Broccolini flowers
 Brussels sprout
 Burdock
 Butter
@@ -70,6 +56,7 @@ Camas
 Canada Goose
 Candied fruit
 Canna
+Canola Oil
 Caper
 Carambola
 Cardoon
@@ -80,17 +67,15 @@ Cassava
 Catfish
 Catsear
 Cauliflower
-Caviar (sturgeon roe)
+Caviar
 Celeriac
 Celery
 Celtuce
 Cereals
-Cereals ready-to-eat
 Chaya
 Chayote
 Cheese
 Cheese sauce
-Cheese spread
 Cheese substitute
 Cheesefurter
 Cherimoya
@@ -103,12 +88,10 @@ Chicken spread
 Chickpea
 Chickweed
 Chicory
-Chilean sea bass
-Chinese artichoke
-Chinese mallow
 Chives
+Chocolate
 Chorizo
-Chrysanthemum (leaves)
+Chrysanthemum
 Clementines
 Cockle
 Coconut
@@ -119,62 +102,51 @@ Common purslane
 Conch
 Corn
 Corn salad
-Corned beef loaf
 Courgette flowers
 Crab
 Crabapples
 Cranberries
 Cranberry sauce
-Cranberry-orange relish
 Crayfish
 Cream
 Cream substitute
 Cress
 Cucumber
 Currants
-Custard-apple
+Custard apple
 Cuttlefish
-Dabberlocks (Badderlocks)
+Dabberlocks
 Daikon
 Dandelion
 Dates
 Daylily
 Dessert topping
 Dill
-Dogfish
 Dolichos bean
-Dorade
 Dressing
 Drumstick
 Duck
 Dulce de Leche
-Dulse (Dillisk)
 Durian
-Dutch brand loaf
 Earthnut pea
 Eel
 Egg
 Egg Mix
 Egg substitute
 Eggnog
-Eggplant 
+Eggplant
 Elderberries
-Elephant foot yam
 Elephant garlic
 Emu
 Endive
-Ensete
-Fat free ice cream
-Fat hen
 Fava bean
-Feijoa
 Fiddlehead
 Figs
-Finger snacks
 Fish broth
 Fish oil
 Florence fennel
 Flounder
+Flour
 Fluted pumpkin
 Frankfurter
 Fruit cocktail
@@ -188,49 +160,40 @@ Garlic chives
 Ginger
 Goji berries
 Golden samphire
-Good King Henry
 Goose
 Gooseberries
+Grape
 Grape juice
 Grapefruit
 Grapefruit juice
-Grapes
-Grape (leaves)
 Gravy
 Greater plantain
-Green bean (French bean)
+Green bean
 Ground Beef
 Ground turkey
 Groundcherries
+Groundnut
 Grouper
+Guacamole
 Guanabana nectar
 Guar
 Guava nectar
 Guava sauce
 Guavas
 Guinea hen
-Sliced Turkey Pepperoni
 Haddock
 Halibut
 Ham
-Ham and cheese loaf or roll
-Ham and cheese spread
-Ham salad spread
 Hamburg parsley
 Headcheese
 Herring
 Hijiki
 Honey roll sausage
-Horned melon (Kiwano)
+Horned melon
 Horse gram
 Horseradish
 Ice cream
-Ice cream bar
-Ice cream cone
-Ice cream cookie sandwich
-Ice cream sandwich
-Ice cream sundae cone
-Ikura (salmon roe)
+Ikura
 Ilish
 Incaparina
 Indian pea
@@ -239,30 +202,24 @@ Jackfruit
 Java-plum
 JellyFish
 Jerusalem artichoke
+Jicama
 John Dory
 Juice
 Jujube
-Jícama
-Kai-lan
+Kai lan
 Kale
-Kazunoko (herring roe)
 Kefir
 Kielbasa
 Kingfish
 Kiwifruit
-Knackwurst
 Kohlrabi
-Komatsuna
 Kombu
-Kuka
 Kumquats
-Kurrat
-Lagos bologi
+Lamb
 Lamb's lettuce
-Lamb's quarters
 Lamprey
 Land cress
-Laver (Gim)
+Laver
 Lebanon bologna
 Leek
 Lemon
@@ -276,12 +233,6 @@ Light ice cream
 Lima bean
 Lime
 Lime juice
-Lingcod
-Litchis
-Liver cheese
-Liver sausage
-Liverwurst spread
-Lizard's tail
 Lobster
 Loco
 Loganberries
@@ -292,43 +243,27 @@ Luffa
 Lumpfish roe
 Luncheon meat
 Luncheon sausage
-Luxury loaf
-Macaroni and cheese loaf
 Mackerel
 Mahi Mahi
 Malabar spinach
-Mammy-apple
+Mammy apple
 Mango
 Mango nectar
 Mangosteen
 Maraschino cherries
 Margarine
-Margarine Spread
-Margarine-like
-Margarine-like shortening
-Margarine-like spread
-Margarine-like spread with yogurt
-Margarine-like vegetable-oil spread
-Masago (capelin roe)
-Mashua
+Masago
 Mayonnaise
-Meat drippings (lard
 Meatballs
-Melokhia
 Melon
-Melon balls
+Melon ball
 Milk
-Milk and cereal bar
-Milk dessert bar
-Milk shakes
-Milk substitutes
-Miner's lettuce (Winter purslane)
+Milk shake
+Milk substitute
 Mizuna greens
 Monkfish
 Mortadella
 Moth bean
-Mother's loaf
-Mozuku
 Mulberries
 Mullet
 Mung bean
@@ -337,10 +272,8 @@ Mussel
 Mustard
 Nance
 Napa cabbage
-Naranjilla (lulo) pulp
+Naranjilla
 Nectarines
-New Zealand Spinach
-New england brand sausage
 Nopal
 Nori
 Octopus
@@ -348,17 +281,12 @@ Ogonori
 Oheloberries
 Okra
 Olive
-Olive fruit
-Olive loaf
 Onion
 Orache
 Orange
-Orange Pineapple Juice Blend
 Orange juice
 Orange peel
-Orange roughy
-Orange-grapefruit juice
-Oven-roasted chicken breast roll
+Oven roasted chicken breast
 Oyster
 Papaya
 Papaya nectar
@@ -369,7 +297,6 @@ Passion-fruit
 Passion-fruit juice
 Pastrami
 Pate
-Pate de foie gras
 Pea
 Peach nectar
 Peaches
@@ -378,14 +305,12 @@ Pear
 Pear nectar
 Pearl onion
 Pepper
-Peppered loaf
 Peppermint
 Pepperoni
 Periwinkle
 Persimmons
 Pheasant
-Pickle and pimiento loaf
-Picnic loaf
+Pickle
 Pigeon pea
 Pignut
 Pike
@@ -403,13 +328,10 @@ Pomfret
 Pompano
 Pork
 Pork Chop
-Pork and beef sausage
-Pork and turkey sausage
 Pork sausage
 Potato
 Potato onion
 Potato soup
-Poultry salad sandwich spread
 Prairie turnip
 Prawns
 Prickly pears
@@ -417,7 +339,6 @@ Prime Rib
 Prune
 Prune juice
 Prune puree
-Prussian asparagus
 Pummelo
 Pumpkin
 Quail
@@ -426,13 +347,12 @@ Radicchio
 Radish
 Raisin
 Rambutan
-Rapini (broccoli rabe)
+Rapini
 Raspberries
 Rhubarb
 Rice
 Ricebean
 Roast beef
-Rose-apples
 Roselle
 Rosemary
 Rowal
@@ -452,10 +372,12 @@ Sapote
 Sardine
 Sauce
 Sausage
+Scallion
 Scallop
 Scorzonera
 Scrapple
-Sculpit (Stridolo)
+Sculpit
+Sea Urchin
 Sea bass
 Sea beet
 Sea cucumber
@@ -465,18 +387,15 @@ Sea lettuce
 Seasoning mix
 Seaweed
 Shad
-Shad roe
 Shallot
 Shark
+Shredded Chicken
 Shrimp
-Sierra Leone bologi
 Skate
 Skirret
-Smoked link sausage
-Snakehead
-Snap pea (sugarsnap)
+Snap pea
 Snapper
-Snow pea (mangetout)
+Snow pea
 Soko
 Sole
 Sorrel
@@ -488,9 +407,7 @@ Soybean
 Spearmint
 Spices
 Spinach
-Split pea soup
-Split pea with ham soup
-Spring onion (Scallion)
+Split pea
 Squab
 Squash
 Squash blossoms
@@ -498,31 +415,28 @@ Squid
 Strawberries
 Sturgeon
 Sugar
-Sugar-apples
+Sugar apples
 Summer purslane
 Surimi
 Swede
 Sweet pepper
-Sweet potato (Kumara)
+Sweet potato
 Swiss chard
-Swisswurst
 Swordfish
+Tamarind
 Tamarind nectar
-Tamarinds
+Tangerine
 Tangerine juice
-Tangerines
 Taro
-Tarwi (Chocho)
 Tatsoi
 Tepary bean
 Thuringer
 Thyme
-Ti
 Tigernut
 Tilapia
 Tilefish
 Tinda
-Tobiko (flying-fish roe)
+Tobiko
 Tomatillo
 Tomato
 Tree onion
@@ -539,9 +453,8 @@ Turkey sticks
 Turkey thigh
 Turmeric
 Turnip
-Turnip greens
+Turnip greens
 Ulluco
-Uni (sea urchin)
 Urad bean
 Vanilla
 Vanilla extract
@@ -557,7 +470,6 @@ Water spinach
 Watercress
 Watermelon
 Welsh onion
-West Indian gherkin
 Wheatgrass
 Whey
 Whitefish
@@ -565,13 +477,9 @@ Whiting
 Wild leek
 Winged bean
 Winter melon
-Yachtwurst
-Yacón
 Yam
-Yao choy
 Yardlong bean
 Yarrow
 Yogurt
 Zucchini
 Zwieback
-﻿Abiyuch

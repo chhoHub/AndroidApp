@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -43,11 +44,16 @@ public class SelectingRecipeActivity extends Activity implements Serializable {
             recipe_id = (List<String>) getIntent().getExtras().getSerializable("recipe_id");
             recipe_sourceurl = (List<String>) getIntent().getExtras().getSerializable("recipe_sourceurl");
             recipe_imageurl = (List<String>) getIntent().getExtras().getSerializable("recipe_imageurl");
+            String msg = (String) getIntent().getExtras().getSerializable("toast");
+            Toast.makeText(SelectingRecipeActivity.this, msg,
+                    Toast.LENGTH_SHORT).show();
             recipeAdapter = new RecipeAdapter(SelectingRecipeActivity.this,R.layout.selectingrecipe_activity,recipe_id,recipe_name,recipe_sourceurl,recipe_imageurl);
             listView.setAdapter(recipeAdapter);
         }
         catch(Exception e){
             e.printStackTrace();
+            Toast.makeText(SelectingRecipeActivity.this, "No recipes generated! Please press update in Ingredients List!",
+                    Toast.LENGTH_SHORT).show();
         }
 
         fav.setOnClickListener(new View.OnClickListener() {

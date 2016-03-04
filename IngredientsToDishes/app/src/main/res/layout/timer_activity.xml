@@ -74,6 +74,7 @@
             android:textAppearance="@android:style/TextAppearance.Large"/>
 
         <EditText
+            android:id="@+id/texthere"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
