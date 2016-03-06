@@ -128,6 +128,7 @@ public class FoodActivity extends Activity implements Serializable {
             public void onClick(View v) {
                 Intent intent = new Intent(FoodActivity.this, FavoritesActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         ingred.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +136,7 @@ public class FoodActivity extends Activity implements Serializable {
             public void onClick(View v) {
                 Intent intent = new Intent(FoodActivity.this, IngredientsActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         recipe.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +152,7 @@ public class FoodActivity extends Activity implements Serializable {
             public void onClick(View v) {
                 Intent intent = new Intent(FoodActivity.this, TimerActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
